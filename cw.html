@@ -1,3 +1,280 @@
+---
+layout: default
+title: ON3KRB — CW / Morse
+body_class: cw-page
+lang: en
+extra_js:
+  - /js/cw.js
+---
+<style>
+/* ── CW PAGINA ── */
+.cw-hero {
+  padding: 3rem 0 1.5rem;
+}
+.cw-intro {
+  font-size: 0.9rem;
+  color: var(--c-text-2);
+  margin-top: 0.75rem;
+  max-width: 620px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ── Q-CODE TABEL ── */
+.qcode-section {
+  margin-bottom: 4rem;
+}
+.qcode-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  background: var(--c-surface);
+}
+.qcode-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.qcode-table thead th {
+  font-family: var(--f-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.22rem;
+  text-transform: uppercase;
+  color: var(--c-text-3);
+  padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid var(--c-border);
+  text-align: left;
+  white-space: nowrap;
+}
+.qcode-table tbody tr {
+  border-bottom: 1px solid rgba(0,255,136,0.05);
+  transition: background var(--t);
+}
+.qcode-table tbody tr:last-child { border-bottom: none; }
+.qcode-table tbody tr:hover { background: rgba(0,255,136,0.03); }
+
+.td-code {
+  padding: 0.85rem 1.2rem;
+  font-family: var(--f-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--c-primary);
+  text-shadow: var(--glow-sm);
+  white-space: nowrap;
+  min-width: 70px;
+}
+.td-uitleg {
+  padding: 0.85rem 1.2rem;
+  font-size: 0.82rem;
+  color: var(--c-text-2);
+  line-height: 1.55;
+  max-width: 320px;
+}
+.td-morse {
+  padding: 0.6rem 1rem;
+  vertical-align: middle;
+}
+.td-play {
+  padding: 0.6rem 1rem;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* Kleine morse-blokjes */
+.mc-mini-wrap {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.mc-mini {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.28rem 0.38rem;
+  border: 1px solid var(--c-border);
+  border-radius: 5px;
+  min-width: 28px;
+  background: var(--c-bg);
+  transition: all 0.07s;
+  flex-shrink: 0;
+}
+.mc-mini.active {
+  border-color: var(--c-primary);
+  background: rgba(0,255,136,0.09);
+  box-shadow: var(--glow-sm);
+}
+.mc-mini .ltr {
+  font-family: var(--f-display);
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: var(--c-text);
+  line-height: 1;
+}
+.mc-mini.active .ltr { color: var(--c-primary); }
+.mc-mini .dts {
+  font-family: var(--f-mono);
+  font-size: 0.45rem;
+  color: var(--c-cyan);
+  letter-spacing: 0.05rem;
+  line-height: 1;
+}
+
+/* Mini LED */
+.led-mini {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0a1220;
+  border: 1px solid rgba(0,255,136,0.18);
+  display: inline-block;
+  margin-right: 6px;
+  vertical-align: middle;
+  transition: all 0.045s;
+  flex-shrink: 0;
+}
+.led-mini.on {
+  background: var(--c-primary);
+  box-shadow: var(--glow-sm);
+  border-color: var(--c-primary);
+}
+
+/* Play knop */
+.btn-play-mini {
+  background: var(--c-primary);
+  color: var(--c-bg);
+  font-family: var(--f-mono);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  padding: 0.35rem 0.75rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all var(--t);
+  white-space: nowrap;
+}
+.btn-play-mini:hover:not(:disabled) {
+  background: #fff;
+  box-shadow: var(--glow-sm);
+  transform: translateY(-1px);
+}
+.btn-play-mini:disabled {
+  background: var(--c-surface);
+  color: var(--c-text-3);
+  cursor: not-allowed;
+}
+
+/* ── LOGBOOK SECTIE ── */
+.notes-section { margin-bottom: 4rem; }
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+.note-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-left: 3px solid var(--c-primary);
+  border-radius: 0 12px 12px 0;
+  padding: 1.25rem 1.5rem;
+  transition: all var(--t);
+}
+.note-card:hover {
+  border-color: var(--c-border-hard);
+  box-shadow: var(--glow-sm);
+  transform: translateX(4px);
+}
+.note-card__label {
+  font-family: var(--f-mono);
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  color: var(--c-primary);
+  margin-bottom: 0.4rem;
+  opacity: 0.8;
+}
+.note-card__title {
+  font-family: var(--f-display);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--c-text);
+  margin-bottom: 0.4rem;
+}
+.note-card__text {
+  font-size: 0.82rem;
+  color: var(--c-text-2);
+  line-height: 1.65;
+}
+
+/* ── QSO SECTIE ── */
+.qso-section { margin-bottom: 4rem; }
+.qso-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--c-border);
+  border-radius: 14px;
+  background: var(--c-surface);
+}
+.qso-table { width: 100%; border-collapse: collapse; }
+.qso-table thead th {
+  font-family: var(--f-mono); font-size: 0.58rem;
+  letter-spacing: 0.22rem; text-transform: uppercase;
+  color: var(--c-text-3); padding: 0.9rem 1.2rem;
+  border-bottom: 1px solid var(--c-border);
+  text-align: left; white-space: nowrap;
+}
+.qso-table tbody tr { border-bottom: 1px solid rgba(0,255,136,0.05); transition: background var(--t); }
+.qso-table tbody tr:last-child { border-bottom: none; }
+.qso-table tbody tr:hover { background: rgba(0,255,136,0.03); }
+.td-who { padding: 0.7rem 1rem; font-family: var(--f-mono); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08rem; white-space: nowrap; min-width: 70px; }
+.td-who.caller  { color: var(--c-primary); text-shadow: var(--glow-sm); }
+.td-who.station { color: var(--c-cyan); }
+.td-phrase { padding: 0.7rem 1rem; font-family: var(--f-mono); font-size: 0.72rem; color: var(--c-text); letter-spacing: 0.06rem; white-space: nowrap; }
+.td-meaning { padding: 0.7rem 1rem; font-size: 0.78rem; color: var(--c-text-2); font-style: italic; }
+.mc-mini-wrap.wrap-ok { flex-wrap: wrap; gap: 0.2rem; max-width: 460px; }
+
+/* ── MATERIAL SECTIE ── */
+.material-section { margin-bottom: 4rem; }
+.material-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem; margin-top: 1.5rem;
+}
+.gear-card {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 16px; overflow: hidden;
+  transition: border-color var(--t), box-shadow var(--t), transform var(--t);
+  display: flex; flex-direction: column;
+}
+.gear-card:hover {
+  border-color: var(--c-border-hard);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.35), var(--glow-sm);
+  transform: translateY(-4px);
+}
+.gear-card__img {
+  width: 100%; aspect-ratio: 16/9;
+  object-fit: contain; background: var(--c-surface-2);
+  padding: 1.25rem; border-bottom: 1px solid var(--c-border); display: block;
+}
+.gear-card__body { padding: 1.25rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+.gear-card__category { font-family: var(--f-mono); font-size: 0.55rem; text-transform: uppercase; letter-spacing: 0.16rem; color: var(--c-primary); margin-bottom: 0.4rem; opacity: 0.85; }
+.gear-card__title { font-family: var(--f-display); font-size: 0.95rem; font-weight: 700; color: var(--c-text); margin-bottom: 0.6rem; line-height: 1.3; }
+.gear-card__text { font-size: 0.82rem; color: var(--c-text-2); line-height: 1.65; flex: 1; margin-bottom: 1rem; }
+.gear-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.gear-tag { font-family: var(--f-mono); font-size: 0.52rem; letter-spacing: 0.1rem; padding: 0.2rem 0.55rem; border-radius: 999px; background: var(--c-surface-2); border: 1px solid var(--c-border-hard); color: var(--c-text-3); }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .td-uitleg  { display: none; }
+  .td-meaning { display: none; }
+}
+@media (max-width: 520px) {
+  .td-phrase { font-size: 0.62rem; }
+}
+</style>
+
 <div class="page-wrap-inner container">
 
   <!-- HERO -->
@@ -49,13 +326,13 @@
           </tr>
         </thead>
         <tbody id="qcodeBody">
-          <!-- Gevuld door JavaScript -->
+          <!-- Filled by JavaScript -->
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- NOTITIES / VOORTGANG -->
+  <!-- LOGBOOK -->
   <div class="notes-section anim-3">
     <div class="section-label">Logbook</div>
     <h2 class="section-title" style="font-size:1.4rem; margin-bottom:0.5rem;">My CW Journey</h2>
@@ -153,4 +430,4 @@
     </div>
   </div>
 
-</div>
+</div><!-- /container -->
