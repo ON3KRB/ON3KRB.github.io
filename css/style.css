@@ -387,7 +387,7 @@ body {
 .footer-links { display: flex; gap: 1.5rem; list-style: none; }
 .footer-links a { font-family: var(--f-mono); font-size: 0.68rem; letter-spacing: 0.08rem; color: var(--c-text-3); text-decoration: none; text-transform: uppercase; transition: color var(--t); }
 .footer-links a:hover { color: var(--c-primary); }
-.footer-73 { font-family: var(--f-mono); font-size: 0.65rem; color: var(--c-text-3); letter-spacing: 0.15rem; }
+.footer-73 { font-family: var(--f-mono); font-size: 0.55rem; color: var(--c-text-3); letter-spacing: 0.15rem; }
 
 /* ── ANIMATIES ── */
 @keyframes fadeUp {
