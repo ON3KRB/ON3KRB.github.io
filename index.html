@@ -1,57 +1,13 @@
----
-layout: default
-title: ON3FTB — Kristof
-body_class: landing
-no_footer: true
-extra_css:
-  - /css/landing.css
-extra_js:
-  - /js/landing.js
----
 
-
-<!-- RADIALE GLOW -->
-<div class="radial-glow"></div>
-
-<!-- HOOFDSCENE -->
-<div class="stage">
-
-  <!-- Geometrisch logo -->
-  <div class="logo-wrap">
-    <!-- SVG logo -->
-  </div>
-
-  <!-- Callsign -->
-  <div class="callsign-hero">ON3KRB</div>
-  <div class="phonetic-line">Foxtrot · Tango · Bravo</div>
-
-  <!-- Morse karakterblokken -->
-  <div class="morse-chars" id="morseChars"></div>
-
-  <!-- LED -->
-  <div class="led-wrap">
-    <div class="led" id="led"></div>
-  </div>
-
-  <!-- Controls -->
-  <div class="controls">
-    <button class="btn-morse" id="playBtn">▶ PLAY</button>
-    <button class="btn-morse" id="stopBtn" disabled>■ STOP</button>
-
-    <div class="speed-wrap">
-      <span>TRAAG</span>
-      <input type="range" id="speed" min="1" max="5" value="3">
-      <span>SNEL</span>
-    </div>
-  </div>
-
-  <div class="status-line" id="status"></div>
-
-  <a class="enter-site" href="{{ '/inner.html' | relative_url }}">
-    ENTER SITE <span class="arr">→</span>
-  </a>
-
-</div>
-
-<div class="bottom-label">73 DE ON3FTB · BELGIË</div>
-``
+/* Extra styling voor blog posts */
+.post-meta{
+  font-family: var(--f-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.12rem;
+  color: var(--c-text-3);
+  margin-top: 0.4rem;
+}
+.post-body p{ margin: 0 0 1.1rem; }
+.post-body img{ max-width:100%; height:auto; border-radius:12px; border:1px solid var(--c-border); }
+.post-body code{ font-family: var(--f-mono); color: var(--c-cyan); }
+.post-body pre{ background: var(--c-surface); border:1px solid var(--c-border); padding:1rem; border-radius:12px; overflow:auto; }

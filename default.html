@@ -1,0 +1,16 @@
+---
+layout: default
+---
+<article class="post container--narrow">
+  <header class="post-header">
+    <div class="section-label">Blog</div>
+    <h1 class="section-title" style="font-size:2rem;">{{ page.title }}</h1>
+    <p class="post-meta">{{ page.date | date: "%B %d, %Y" }}</p>
+  </header>
+  <div class="post-body prose">
+    {{ content }}
+  </div>
+  <div style="margin-top:2rem;">
+    <a class="btn btn-ghost" href="{{ '/blog.html' | relative_url }}">← Terug naar blog</a>
+  </div>
+</article>

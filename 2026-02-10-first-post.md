@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+  <link rel="stylesheet" href="{{ '/css/style.css' | relative_url }}">
+  {% if page.layout == 'post' %}
+  <link rel="stylesheet" href="{{ '/css/post.css' | relative_url }}">
+  {% endif %}
+  {% if page.extra_css %}{% for css in page.extra_css %}<link rel="stylesheet" href="{{ css | relative_url }}">{% endfor %}{% endif %}
+</head>
+<body class="grid-bg {{ page.body_class }}">
+
+  <!-- NAVIGATIE -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <!-- Brand -->
+      <a class="nav-brand" href="{{ '/index.html' | relative_url }}">
+        <svg width="28" height="32" viewBox="0 0 28 32" fill="none">
+      <defs>
+        <filter id="ng">
+          <feGaussianBlur stdDeviation="1.5" result="b"/>
+          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <polygon points="14,2 26,28 2,28" fill="none" stroke="#00ff88" stroke-width="1.2" opacity="0.2"/>
+      <line x1="14" y1="2" x2="14" y2="28" stroke="#00ff88" stroke-width="1.8" filter="url(#ng)"/>
+      <line x1="8" y1="14" x2="20" y2="14" stroke="#00ff88" stroke-width="1.3"/>
+      <line x1="5" y1="21" x2="23" y2="21" stroke="#00ff88" stroke-width="1.3"/>
+      <path d="M14,2 m6,-1 a7,7 0 0,1 0,10" fill="none" stroke="#00ff88" stroke-width="1.6" class="wave-1"/>
+      <path d="M14,2 m9,-2 a11,11 0 0,1 0,16" fill="none" stroke="#00ff88" stroke-width="1.2" class="wave-2" opacity="0.55"/>
+      <circle cx="14" cy="2" r="2" fill="#00ff88" filter="url(#ng)"/>
+    </svg>
+        <span class="nav-brand-call">ON3KRB</span>
+      </a>
+
+      <!-- Desktop links -->
+      <ul class="nav-links">
+      <li data-morse="...."><a href="{{ '/inner.html' | relative_url }}" class="{% if page.url == '/inner.html' %}active{% endif %}">Home</a></li>
+      <li data-morse="-..."><a href="{{ '/blog.html' | relative_url }}" class="{% if page.url == '/blog.html' %}active{% endif %}">Blog</a></li>
+      <li data-morse="..."><a href="{{ '/shack.html' | relative_url }}" class="{% if page.url == '/shack.html' %}active{% endif %}">Shack</a></li>
+      <li data-morse="--"><a href="{{ '/mobile.html' | relative_url }}" class="{% if page.url == '/mobile.html' %}active{% endif %}">Mobile</a></li>
+      <li data-morse=".--."><a href="{{ '/portable.html' | relative_url }}" class="{% if page.url == '/portable.html' %}active{% endif %}">Portable</a></li>
+      <li data-morse="-.-."><a href="{{ '/contact.html' | relative_url }}" class="{% if page.url == '/contact.html' %}active{% endif %}">Contact</a></li>
+      </ul>
+
+      <!-- Klok -->
+      <div class="nav-right">
+        <div class="nav-clock" id="navClock">--:--:-- UTC</div>
+      </div>
+
+      <!-- Hamburger -->
+      <button class="nav-burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobiel drawer -->
+  <div class="nav-drawer" id="drawer">
+    <ul>
+        <li><a href="{{ '/inner.html' | relative_url }}">Home</a></li>
+        <li><a href="{{ '/blog.html' | relative_url }}">Blog</a></li>
+        <li><a href="{{ '/shack.html' | relative_url }}">Shack</a></li>
+        <li><a href="{{ '/mobile.html' | relative_url }}">Mobile</a></li>
+        <li><a href="{{ '/portable.html' | relative_url }}">Portable</a></li>
+        <li><a href="{{ '/contact.html' | relative_url }}">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="page-wrap">
+    <main>
+      {{ content }}
+    </main>
+  </div>
+
+  {% unless page.no_footer %}
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-call">ON3KRB</div>
+      <ul class="footer-links">
+        <li><a href="{{ '/blog.html' | relative_url }}">Blog</a></li>
+        <li><a href="{{ '/contact.html' | relative_url }}">Contact</a></li>
+        <li><a href="https://github.com/">GitHub</a></li>
+      </ul>
+      <div class="footer-73">73 DE ON3KRB</div>
+    </div>
+  </footer>
+  {% endunless %}
+
+  <script src="{{ '/js/main.js' | relative_url }}"></script>
+  {% if page.extra_js %}{% for js in page.extra_js %}<script src="{{ js | relative_url }}"></script>{% endfor %}{% endif %}
+</body>
+</html>
