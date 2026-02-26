@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ON3FTB — CW</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .morse-alpha{display:grid;grid-template-columns:repeat(auto-fill,minmax(68px,1fr));gap:.6rem;margin:1.5rem 0;}
+    .ma-key{background:var(--c-surface);border:1px solid var(--c-border);border-radius:10px;padding:.65rem .5rem;text-align:center;cursor:pointer;transition:all var(--t);user-select:none;}
+    .ma-key:hover,.ma-key.lit{border-color:var(--c-primary);background:rgba(0,255,136,.09);box-shadow:var(--glow-sm);}
+    .ma-ltr{font-family:var(--f-display);font-size:1.1rem;font-weight:700;color:var(--c-text-2);}
+    .ma-key:hover .ma-ltr,.ma-key.lit .ma-ltr{color:var(--c-primary);}
+    .ma-code{font-family:var(--f-mono);font-size:.72rem;color:var(--c-cyan);margin-top:.2rem;letter-spacing:.05rem;}
+
+    .cw-led-row{display:flex;align-items:center;gap:.75rem;margin-top:1rem;}
+    .cw-led{width:20px;height:20px;border-radius:50%;background:#060d1a;border:2px solid rgba(0,255,136,.15);transition:all .04s;flex-shrink:0;}
+    .cw-led.on{background:var(--c-primary);border-color:var(--c-primary);box-shadow:0 0 12px rgba(0,255,136,.9),0 0 30px rgba(0,255,136,.4);}
+    .cw-status{font-family:var(--f-mono);font-size:.7rem;color:var(--c-text-3);letter-spacing:.1rem;min-height:1.2rem;}
+
+    .prog-wrap{background:var(--c-surface);border:1px solid var(--c-border);border-radius:16px;padding:2rem;}
+    .prog-item{margin-bottom:1.25rem;}
+    .prog-label{display:flex;justify-content:space-between;margin-bottom:.4rem;}
+    .prog-name{font-family:var(--f-mono);font-size:.65rem;color:var(--c-text-2);}
+    .prog-val{font-family:var(--f-mono);font-size:.65rem;color:var(--c-primary);}
+    .prog-bar{background:var(--c-surface-2);border-radius:3px;height:5px;overflow:hidden;}
+    .prog-fill{height:100%;border-radius:3px;background:var(--c-primary);box-shadow:var(--glow-sm);}
+
+    .qso-example{background:var(--c-surface-2);border:1px solid var(--c-border);border-radius:12px;padding:1.5rem;font-family:var(--f-mono);font-size:.8rem;line-height:2.1;}
+    .qso-s{color:var(--c-primary);}
+    .qso-r{color:var(--c-cyan);}
+    .qso-c{color:var(--c-text-3);font-size:.68rem;}
+
+    .res-card{background:var(--c-surface);border:1px solid var(--c-border);border-radius:14px;padding:1.5rem;text-decoration:none;display:block;transition:border-color var(--t),box-shadow var(--t),transform var(--t);}
+    .res-card:hover{border-color:var(--c-primary);box-shadow:var(--glow-sm);transform:translateY(-3px);}
+    .res-icon{font-size:1.4rem;margin-bottom:.65rem;}
+    .res-name{font-family:var(--f-display);font-size:.9rem;font-weight:700;color:var(--c-text);margin-bottom:.35rem;}
+    .res-desc{font-size:.82rem;color:var(--c-text-2);line-height:1.55;}
+    .res-url{font-family:var(--f-mono);font-size:.62rem;color:var(--c-primary);margin-top:.65rem;display:block;}
+  </style>
+</head>
+<body class="grid-bg">
+<div id="site-nav-mount"></div>
+<div class="page-wrap">
+
+  <div class="page-hero" data-bg-text="MORSE">
+    <div class="container page-hero-inner">
+      <div class="hero-tag a1">ON3FTB · CW</div>
+      <h1 class="hero-title a2"><span>Morse</span> Code</h1>
+      <p class="hero-sub a3">De oudste digitale mode ter wereld. 100 jaar oud en nog steeds magie op de band.</p>
+      <div class="hero-stats a4">
+        <div class="hstat"><div class="hstat-num">~12</div><div class="hstat-lbl">wpm ontvangen</div></div>
+        <div class="hstat"><div class="hstat-num">~10</div><div class="hstat-lbl">wpm sturen</div></div>
+        <div class="hstat"><div class="hstat-num">25</div><div class="hstat-lbl">wpm doel</div></div>
+        <div class="hstat"><div class="hstat-num">Koch</div><div class="hstat-lbl">Methode</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactief alfabet -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label a1">Interactief</div>
+      <h2 class="section-title a1">Klik op een letter om te horen</h2>
+      <p class="section-sub a2">Klik op een letter of cijfer en hoor de morse. Zo klink jij op de band.</p>
+      <div class="morse-alpha a3" id="morseAlpha"></div>
+      <div class="cw-led-row a3">
+        <div class="cw-led" id="cwLed"></div>
+        <div class="cw-status" id="cwStat"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leren + voortgang -->
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+        <div>
+          <div class="section-label a1">Hoe ik het leer</div>
+          <h2 class="section-title a1" style="font-size:1.5rem;">Koch-methode</h2>
+          <p style="color:var(--c-text-2);font-weight:300;margin-bottom:1rem;line-height:1.8;">Begin bij 20 wpm karakter-snelheid, ook al kopieer je traag. Je hersenen leren morse als een klank — niet als puntjes en streepjes. Dat is het geheim.</p>
+          <p style="color:var(--c-text-2);font-weight:300;margin-bottom:1.75rem;line-height:1.8;">20 minuten per dag is effectiever dan 2 uur in het weekend. Regelmaat wint altijd van intensiteit.</p>
+
+          <div class="qso-example a2">
+            <div><span class="qso-c">// Oproep</span></div>
+            <div class="qso-s">CQ CQ DE ON3FTB ON3FTB K</div>
+            <div><span class="qso-c">// Antwoord</span></div>
+            <div class="qso-r">ON3FTB DE DL4KW DL4KW K</div>
+            <div><span class="qso-c">// Rapport sturen</span></div>
+            <div class="qso-s">DL4KW DE ON3FTB RST 599 599 K</div>
+            <div><span class="qso-c">// Afsluiten</span></div>
+            <div class="qso-s">TU 73 DE ON3FTB SK</div>
+          </div>
+        </div>
+
+        <div class="prog-wrap a2">
+          <div class="section-label" style="margin-bottom:1.25rem;">Voortgang</div>
+          <div class="prog-item">
+            <div class="prog-label"><span class="prog-name">Alfabet & cijfers</span><span class="prog-val">75%</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:75%"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-label"><span class="prog-name">Ontvangen (wpm)</span><span class="prog-val">~12 wpm</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:48%"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-label"><span class="prog-name">Sturen (wpm)</span><span class="prog-val">~10 wpm</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:40%"></div></div>
+          </div>
+          <div class="prog-item">
+            <div class="prog-label"><span class="prog-name">CW QSO's</span><span class="prog-val">Eerste stappen</span></div>
+            <div class="prog-bar"><div class="prog-fill" style="width:8%"></div></div>
+          </div>
+          <p style="font-size:.78rem;color:var(--c-text-3);margin-top:1.25rem;font-style:italic;">Doel: 25 wpm comfortabel voor contest gebruik. Elke dag een stukje dichter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ervaringen -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label a1">Ervaringen</div>
+      <h2 class="section-title a1">CW leren — eerlijk verhaal</h2>
+      <div class="exp-grid" style="margin-bottom:4rem;">
+        <div class="exp-card a2">
+          <div class="exp-label">Week 1-2</div>
+          <div class="exp-title">Complete chaos</div>
+          <div class="exp-text">De eerste weken klinkt alles hetzelfde. E, T, I, A — het lijkt willekeurig. Niet opgeven. Je brein is aan het hardwiren.</div>
+        </div>
+        <div class="exp-card a3">
+          <div class="exp-label">Week 3-4</div>
+          <div class="exp-title">Eerste herkenning</div>
+          <div class="exp-text">Plots hoor je een letter zonder nadenken. Dat gevoel — die eerste onbewuste herkenning — is verslavend. Je wil meer.</div>
+        </div>
+        <div class="exp-card a4">
+          <div class="exp-label">Maand 2</div>
+          <div class="exp-title">Het begint te vloeien</div>
+          <div class="exp-text">Korte woorden gaan automatisch. CQ, DE, RST, TU, 73 — ze vormen een eigen vocabulaire. Het begin van echte CW.</div>
+        </div>
+        <div class="exp-card a5">
+          <div class="exp-label">Tip</div>
+          <div class="exp-title">Luister op de band</div>
+          <div class="exp-text">Zet de radio op 14.025 MHz en luister. Ook als je niets begrijpt. Je oor went aan het ritme van echte operators — dat leert meer dan apps.</div>
+        </div>
+      </div>
+
+      <!-- Resources -->
+      <div class="section-label a1">Resources</div>
+      <h2 class="section-title a1">Leren & oefenen</h2>
+      <div class="three-col">
+        <a class="res-card a2" href="https://lcwo.net" target="_blank" rel="noopener">
+          <div class="res-icon">🔤</div>
+          <div class="res-name">LCWO.net</div>
+          <div class="res-desc">Learn CW Online — Koch-methode, progressieve oefeningen. De beste gratis tool voor beginners.</div>
+          <span class="res-url">lcwo.net →</span>
+        </a>
+        <a class="res-card a3" href="https://morse.withgoogle.com" target="_blank" rel="noopener">
+          <div class="res-icon">🎮</div>
+          <div class="res-name">Morse Trainer</div>
+          <div class="res-desc">Google's interactieve morse trainer. Leren met een paddle in de browser. Toegankelijk voor iedereen.</div>
+          <span class="res-url">morse.withgoogle.com →</span>
+        </a>
+        <a class="res-card a4" href="https://morsecode.world" target="_blank" rel="noopener">
+          <div class="res-icon">📡</div>
+          <div class="res-name">MorseCode.world</div>
+          <div class="res-desc">Realtime decoder, trainer en practice QSO's. Ook perfect als referentie en om op de band te oefenen.</div>
+          <span class="res-url">morsecode.world →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div id="site-footer-mount"></div>
+<script src="data/nav.js"></script>
+<script>
+mountNav('cw.html');
+const MORSE={A:'.-',B:'-...',C:'-.-.',D:'-..',E:'.',F:'..-.',G:'--.',H:'....',I:'..',J:'.---',K:'-.-',L:'.-..',M:'--',N:'-.',O:'---',P:'.--.',Q:'--.-',R:'.-.',S:'...',T:'-',U:'..-',V:'...-',W:'.--',X:'-..-',Y:'-.--',Z:'--..',0:'-----',1:'.----',2:'..---',3:'...--',4:'....-',5:'.....',6:'-....',7:'--...',8:'---..',9:'----.'};
+const alpha=document.getElementById('morseAlpha');
+[...'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'].forEach(c=>{
+  const d=document.createElement('div');d.className='ma-key';
+  d.innerHTML=`<div class="ma-ltr">${c}</div><div class="ma-code">${MORSE[c]}</div>`;
+  d.addEventListener('click',()=>playCW(c,d));alpha.appendChild(d);
+});
+let cwCtx=null,cwBusy=false;
+const cwLed=document.getElementById('cwLed'),cwStat=document.getElementById('cwStat');
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+function tone(dur){return new Promise(r=>{
+  if(!cwCtx)cwCtx=new(window.AudioContext||window.webkitAudioContext)();
+  const o=cwCtx.createOscillator(),g=cwCtx.createGain();
+  o.connect(g);g.connect(cwCtx.destination);o.frequency.value=700;o.type='sine';
+  const t=cwCtx.currentTime,d=dur/1000;
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.45,t+.006);
+  g.gain.setValueAtTime(.45,t+d-.006);g.gain.linearRampToValueAtTime(0,t+d);
+  o.start(t);o.stop(t+d);setTimeout(r,dur);
+});}
+async function playCW(c,el){
+  if(cwBusy)return;cwBusy=true;el.classList.add('lit');
+  cwStat.textContent=c+' = '+MORSE[c];
+  const dot=90;
+  for(const s of MORSE[c].split('')){
+    cwLed.className='cw-led on';await tone(s==='.'?dot:dot*3);cwLed.className='cw-led';await sleep(dot);
+  }
+  el.classList.remove('lit');cwBusy=false;
+}
+</script>
+</body>
+</html>

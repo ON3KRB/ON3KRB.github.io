@@ -1,23 +1,218 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ON3FTB — Kristof Cornelis</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { overflow:hidden; }
+    .radial { position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;background:radial-gradient(ellipse,rgba(0,255,136,.05) 0%,transparent 65%);pointer-events:none;z-index:0; }
 
----
-layout: default
-landing: true
-title: Home
----
-<section class="stage">
- <h1 class="callsign-hero">ON3KRB</h1>
- <p class="phonetic-line">Foxtrot · Tango · Bravo</p>
-</section>
-<section class="container">
- <h2>Laatste posts</h2>
- <div class="blog-grid">
- {% assign posts = site.posts | slice: 0,4 %}
- {% for post in posts %}
-  {% if forloop.first %}
-   <a class="blog-featured" href="{{ post.url }}"><h3>{{ post.title }}</h3><p>{{ post.excerpt }}</p></a>
-  {% else %}
-   <a class="blog-card" href="{{ post.url }}"><h4>{{ post.title }}</h4></a>
-  {% endif %}
- {% endfor %}
- </div>
-</section>
+    .stage { position:relative;z-index:1;height:calc(100vh - var(--nav-h));display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;padding-top:4rem;text-align:center; }
+
+    /* Logo */
+    .logo-wrap { margin-bottom:1.6rem; animation:fadeUp 1s .2s ease both; }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+    .wave-1{animation:wP 2s 0s ease-in-out infinite;}
+    .wave-2{animation:wP 2s .4s ease-in-out infinite;}
+    .wave-3{animation:wP 2s .8s ease-in-out infinite;}
+    @keyframes wP{0%,100%{opacity:.9;}50%{opacity:.1;}}
+
+    /* Callsign */
+    .callsign-hero { font-family:var(--f-display);font-size:clamp(2rem,6.5vw,4.2rem);font-weight:900;letter-spacing:.4rem;color:var(--c-primary);text-shadow:var(--glow-lg);line-height:1;animation:fadeUp 1s .35s ease both;margin-bottom:.45rem; }
+    .phonetic { font-family:var(--f-mono);font-size:clamp(.54rem,1.4vw,.72rem);letter-spacing:.28rem;color:var(--c-text-3);text-transform:uppercase;animation:fadeUp 1s .5s ease both;margin-bottom:2.5rem; }
+
+    /* ── MORSE BLOKKEN ── groot en prominent */
+    .morse-chars { display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-bottom:2rem;animation:fadeUp 1s .6s ease both; }
+    .mc {
+      display:flex;flex-direction:column;align-items:center;gap:.45rem;
+      padding:.9rem 1rem;border:1px solid var(--c-border);border-radius:12px;
+      min-width:66px;background:var(--c-surface);
+      transition:border-color .06s, background .06s, box-shadow .06s;
+    }
+    .mc.active {
+      border-color:var(--c-primary);
+      background:rgba(0,255,136,.1);
+      box-shadow:0 0 18px rgba(0,255,136,.3), 0 0 60px rgba(0,255,136,.08);
+    }
+    .mc .ltr { font-family:var(--f-display);font-size:1.55rem;font-weight:700;color:var(--c-text-2);line-height:1; }
+    .mc.active .ltr { color:var(--c-primary);text-shadow:var(--glow-sm); }
+    .mc .dts { font-family:var(--f-mono);font-size:.88rem;color:var(--c-cyan);letter-spacing:.1rem; }
+
+    /* ── LED — groot en centraal ── */
+    .led-row { display:flex;align-items:center;gap:.75rem;margin-bottom:1.75rem;animation:fadeUp 1s .65s ease both;justify-content:center; }
+    .led {
+      width:26px;height:26px;border-radius:50%;
+      background:#060d1a;border:2px solid rgba(0,255,136,.15);
+      transition:background .04s,box-shadow .04s,border-color .04s;
+      flex-shrink:0;
+    }
+    .led.on {
+      background:var(--c-primary);
+      border-color:var(--c-primary);
+      box-shadow:0 0 14px rgba(0,255,136,.95), 0 0 35px rgba(0,255,136,.55), 0 0 70px rgba(0,255,136,.2);
+    }
+    .led-label { font-family:var(--f-mono);font-size:.6rem;letter-spacing:.15rem;color:var(--c-text-3);text-transform:uppercase;min-width:140px; }
+
+    /* Controls */
+    .controls { display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;justify-content:center;margin-bottom:.65rem;animation:fadeUp 1s .75s ease both; }
+    .btn-play { background:var(--c-primary);color:var(--c-bg);font-family:var(--f-mono);font-size:.78rem;font-weight:700;letter-spacing:.15rem;padding:.65rem 1.6rem;border:none;border-radius:8px;cursor:pointer;transition:all var(--t); }
+    .btn-play:hover:not(:disabled) { background:#fff;box-shadow:var(--glow-md);transform:translateY(-2px); }
+    .btn-play:disabled { background:var(--c-surface);color:var(--c-text-3);cursor:not-allowed; }
+    .speed-wrap { display:flex;align-items:center;gap:.4rem;font-family:var(--f-mono);font-size:.62rem;color:var(--c-text-3); }
+    input[type=range] { accent-color:var(--c-primary);width:90px; }
+
+    .status { font-family:var(--f-mono);font-size:.68rem;color:var(--c-text-3);letter-spacing:.15rem;min-height:1.2rem;margin-bottom:1.75rem;animation:fadeUp 1s .8s ease both; }
+
+    /* Enter knop */
+    .enter-btn { display:inline-flex;align-items:center;gap:.5rem;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.2rem;text-transform:uppercase;color:var(--c-text-3);text-decoration:none;border:1px solid var(--c-border);padding:.65rem 1.8rem;border-radius:8px;transition:all .3s ease;animation:fadeUp 1s .9s ease both; }
+    .enter-btn:hover { color:var(--c-primary);border-color:var(--c-primary);box-shadow:var(--glow-sm);letter-spacing:.28rem; }
+    .enter-btn .arr { transition:transform .25s; }
+    .enter-btn:hover .arr { transform:translateX(5px); }
+
+    .bottom-label { position:fixed;bottom:1.2rem;font-family:var(--f-mono);font-size:.58rem;color:var(--c-text-3);letter-spacing:.18rem;opacity:.35;z-index:2; }
+  </style>
+</head>
+<body class="grid-bg">
+<div id="site-nav-mount"></div>
+<div class="radial"></div>
+
+<div class="stage">
+  <!-- Logo SVG -->
+  <div class="logo-wrap">
+    <svg width="96" height="96" viewBox="0 0 110 110" fill="none">
+      <defs><filter id="mg"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+      <polygon points="55,10 96,96 14,96" fill="none" stroke="#00ff88" stroke-width="1.3" opacity=".18"/>
+      <line x1="55" y1="10" x2="55" y2="96" stroke="#00ff88" stroke-width="2.2" filter="url(#mg)"/>
+      <line x1="40" y1="46" x2="70" y2="46" stroke="#00ff88" stroke-width="1.5"/>
+      <line x1="32" y1="66" x2="78" y2="66" stroke="#00ff88" stroke-width="1.5"/>
+      <line x1="22" y1="96" x2="88" y2="96" stroke="#00ff88" stroke-width="1" opacity=".2"/>
+      <path d="M55,10 m13,-2 a14,14 0 0,1 0,20" fill="none" stroke="#00ff88" stroke-width="2" class="wave-1"/>
+      <path d="M55,10 m21,-5 a22,22 0 0,1 0,32" fill="none" stroke="#00ff88" stroke-width="1.4" class="wave-2" opacity=".55"/>
+      <path d="M55,10 m30,-8 a32,32 0 0,1 0,46" fill="none" stroke="#00ff88" stroke-width="1" class="wave-3" opacity=".28"/>
+      <circle cx="55" cy="10" r="3.5" fill="#00ff88" filter="url(#mg)"/>
+    </svg>
+  </div>
+
+  <div class="callsign-hero">ON3FTB</div>
+  <div class="phonetic">Foxtrot &middot; Tango &middot; Bravo</div>
+
+  <!-- Morse blokken -->
+  <div class="morse-chars" id="morseChars"></div>
+
+  <!-- LED + label -->
+  <div class="led-row">
+    <div class="led" id="led"></div>
+    <div class="led-label" id="ledLabel"></div>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <button class="btn-play" id="playBtn" onclick="startMorse()">▶ SPEEL</button>
+    <button class="btn-play" id="stopBtn" onclick="stopMorse()" disabled style="background:var(--c-surface);color:var(--c-text-3);">■ STOP</button>
+    <div class="speed-wrap">
+      <span>TRAAG</span>
+      <input type="range" id="wpmRange" min="1" max="5" value="3">
+      <span>SNEL</span>
+    </div>
+  </div>
+
+  <div class="status" id="status"></div>
+  <a class="enter-btn" href="over.html">ENTER SITE <span class="arr">→</span></a>
+</div>
+
+<div class="bottom-label">73 DE ON3FTB &nbsp;·&nbsp; BELGIË</div>
+<div id="site-footer-mount"></div>
+
+<script src="data/nav.js"></script>
+<script>
+mountNav('index.html');
+
+const CALL = 'ON3FTB';
+const MORSE = {A:'.-',B:'-...',C:'-.-.',D:'-..',E:'.',F:'..-.',G:'--.',H:'....',I:'..',J:'.---',K:'-.-',L:'.-..',M:'--',N:'-.',O:'---',P:'.--.',Q:'--.-',R:'.-.',S:'...',T:'-',U:'..-',V:'...-',W:'.--',X:'-..-',Y:'-.--',Z:'--..',0:'-----',1:'.----',2:'..---',3:'...--',4:'....-',5:'.....',6:'-....',7:'--...',8:'---..',9:'----.'};
+
+// Bouw blokken
+const ce = document.getElementById('morseChars');
+CALL.split('').forEach((c,i) => {
+  const d = document.createElement('div');
+  d.className='mc'; d.id='mc'+i;
+  d.innerHTML=`<span class="ltr">${c}</span><span class="dts">${MORSE[c]||''}</span>`;
+  ce.appendChild(d);
+});
+
+let ctx=null, playing=false, halt=false;
+
+function wpm(){ return [8,12,17,22,28][+document.getElementById('wpmRange').value-1]; }
+function dot(){ return 1200/wpm(); }
+function setActive(i){ document.querySelectorAll('.mc').forEach(e=>e.classList.remove('active')); if(i>=0) document.getElementById('mc'+i)?.classList.add('active'); }
+function setLed(on,lbl=''){
+  document.getElementById('led').className='led'+(on?' on':'');
+  document.getElementById('ledLabel').textContent = lbl;
+}
+function setStatus(t){ document.getElementById('status').textContent=t; }
+function sleep(ms){ return new Promise(r=>{const s=Date.now();const f=()=>{if(halt||Date.now()-s>=ms)r();else requestAnimationFrame(f);};f();}); }
+function beep(dur){ return new Promise(r=>{
+  if(!ctx) ctx=new(window.AudioContext||window.webkitAudioContext)();
+  const o=ctx.createOscillator(),g=ctx.createGain();
+  o.connect(g);g.connect(ctx.destination);o.frequency.value=700;o.type='sine';
+  const t=ctx.currentTime,d=dur/1000;
+  g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.45,t+.006);
+  g.gain.setValueAtTime(.45,t+d-.006);g.gain.linearRampToValueAtTime(0,t+d);
+  o.start(t);o.stop(t+d);setTimeout(r,dur);
+});}
+
+async function startMorse(){
+  if(playing) return;
+  playing=true;halt=false;
+  document.getElementById('playBtn').disabled=true;
+  document.getElementById('stopBtn').disabled=false;
+  document.getElementById('stopBtn').style.background='';
+  document.getElementById('stopBtn').style.color='';
+
+  const d=dot(), da=d*3, sy=d, ch=d*3;
+  for(let ci=0;ci<CALL.length;ci++){
+    if(halt) break;
+    const c=CALL[ci];
+    setActive(ci);
+    setStatus('Zenden: ' + c + '  ' + (MORSE[c]||''));
+    const syms=(MORSE[c]||'').split('');
+    for(let si=0;si<syms.length;si++){
+      if(halt) break;
+      setLed(true, syms[si]==='.' ? '·  dot' : '—  dash');
+      await beep(syms[si]==='.'?d:da);
+      setLed(false,'');
+      if(si<syms.length-1) await sleep(sy);
+    }
+    if(ci<CALL.length-1) await sleep(ch);
+  }
+
+  setActive(-1); setLed(false,'');
+  setStatus(halt ? '' : '✓ ON3FTB — 73!');
+  document.getElementById('playBtn').disabled=false;
+  document.getElementById('stopBtn').disabled=true;
+  document.getElementById('stopBtn').style.background='var(--c-surface)';
+  document.getElementById('stopBtn').style.color='var(--c-text-3)';
+  playing=false;
+}
+
+function stopMorse(){
+  halt=true; setLed(false,''); setStatus('');
+  document.getElementById('playBtn').disabled=false;
+  document.getElementById('stopBtn').disabled=true;
+  document.getElementById('stopBtn').style.background='var(--c-surface)';
+  document.getElementById('stopBtn').style.color='var(--c-text-3)';
+  playing=false;
+}
+
+window.addEventListener('load',()=>{
+  setTimeout(()=>{
+    startMorse().catch(()=>{
+      const f=()=>{startMorse();document.removeEventListener('click',f);};
+      document.addEventListener('click',f);
+      setStatus('▶ Klik om morse te starten');
+    });
+  },1200);
+});
+</script>
+</body>
+</html>

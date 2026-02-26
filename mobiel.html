@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ON3FTB — Mobiel</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Rijdend signaal animatie */
+    .signal-bars { display:flex;align-items:flex-end;gap:3px;height:36px; }
+    .sig-bar { width:4px;background:var(--c-primary);border-radius:2px;box-shadow:var(--glow-sm);animation:sigB 1.3s ease-in-out infinite; }
+    @keyframes sigB{0%,100%{height:4px;opacity:.25;}50%{height:100%;opacity:1;}}
+  </style>
+</head>
+<body class="grid-bg">
+<div id="site-nav-mount"></div>
+<div class="page-wrap">
+
+  <div class="page-hero" data-bg-text="MOBIEL">
+    <div class="container page-hero-inner">
+      <div class="hero-tag a1">ON3FTB · Onderweg</div>
+      <h1 class="hero-title a2">Mobiel <span>werken</span></h1>
+      <p class="hero-sub a3">Radio in de auto, op de fiets of waar het leven je brengt. De ether stopt niet aan de voordeur.</p>
+      <div class="hero-stats a4">
+        <div class="hstat"><div class="hstat-num">VHF</div><div class="hstat-lbl">Primair</div></div>
+        <div class="hstat"><div class="hstat-num">UHF</div><div class="hstat-lbl">+ Band</div></div>
+        <div class="hstat"><div class="hstat-num">HF</div><div class="hstat-lbl">Mobiel</div></div>
+        <div class="hstat">
+          <div class="signal-bars" style="justify-content:center;">
+            <div class="sig-bar" style="animation-delay:.0s"></div>
+            <div class="sig-bar" style="animation-delay:.15s"></div>
+            <div class="sig-bar" style="animation-delay:.3s"></div>
+            <div class="sig-bar" style="animation-delay:.45s"></div>
+            <div class="sig-bar" style="animation-delay:.3s"></div>
+            <div class="sig-bar" style="animation-delay:.15s"></div>
+          </div>
+          <div class="hstat-lbl" style="margin-top:.4rem;">Signaal</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Materiaal -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label a1">Materiaal</div>
+      <h2 class="section-title a1">Mobiele uitrusting</h2>
+      <p class="section-sub a2" style="margin-bottom:2.5rem;">Alles wat mee de auto in gaat voor een mobiele sessie.</p>
+
+      <div class="gear-grid">
+        <div class="gear-card a2">
+          <div class="gear-img">📷 Foto mobiele transceiver</div>
+          <div class="gear-body">
+            <div class="gear-type">Mobiele transceiver</div>
+            <div class="gear-name">Jouw mobiele radio</div>
+            <div class="gear-desc">Montage in het dashboard of op de koffer. Welk model, hoeveel watt, welke banden en hoe ingebouwd in de auto.</div>
+            <div class="gear-specs"><span class="spec">VHF/UHF</span><span class="spec">50W</span></div>
+          </div>
+        </div>
+        <div class="gear-card a3">
+          <div class="gear-img">📷 Foto mobiele antenne</div>
+          <div class="gear-body">
+            <div class="gear-type">Mobiele antenne</div>
+            <div class="gear-name">Jouw mobiele antenne</div>
+            <div class="gear-desc">Magnetvoet, lipje of vast gemonteerd. Lengte, banden, de compromissen en de ervaringen in de praktijk.</div>
+            <div class="gear-specs"><span class="spec">Magfoot</span><span class="spec">VHF/UHF</span></div>
+          </div>
+        </div>
+        <div class="gear-card a4">
+          <div class="gear-img">📷 Foto handheld</div>
+          <div class="gear-body">
+            <div class="gear-type">Handheld</div>
+            <div class="gear-name">Jouw handheld</div>
+            <div class="gear-desc">Kleine portofoon voor VHF/UHF. Batterijduur, bereik via repeaters en gebruik onderweg zonder auto.</div>
+            <div class="gear-specs"><span class="spec">VHF</span><span class="spec">UHF</span><span class="spec">Handheld</span></div>
+          </div>
+        </div>
+        <div class="gear-card a5">
+          <div class="gear-img">📷 Foto HF mobiel</div>
+          <div class="gear-body">
+            <div class="gear-type">HF Mobiel (optioneel)</div>
+            <div class="gear-name">HF antenne mobiel</div>
+            <div class="gear-desc">HF mobiel is de ultieme uitdaging — compromis-antenne, grounding op het chassis, maar de resultaten verrassen.</div>
+            <div class="gear-specs"><span class="spec">HF</span><span class="spec">Mobiel</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ervaringen -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label a1">Ervaringen</div>
+      <h2 class="section-title a1">Mobiel werken in de praktijk</h2>
+      <p class="section-sub a2" style="margin-bottom:2.5rem;">Eerlijke lessen van onderweg — wat werkt, wat niet, en wat me verraste.</p>
+
+      <div class="two-col" style="margin-bottom:2rem;">
+        <div class="exp-grid" style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="exp-card a2">
+            <div class="exp-label">Antenne is alles</div>
+            <div class="exp-title">Investeer in de beste die past</div>
+            <div class="exp-text">Een betere mobiele antenne doet meer dan een betere radio. Het is altijd een compromis — maar een goed compromis maakt het verschil tussen niets en alles.</div>
+          </div>
+          <div class="exp-card a3">
+            <div class="exp-label">Grounding</div>
+            <div class="exp-title">Aarding op het chassis</div>
+            <div class="exp-text">Magnetvoet op het dak geeft een betere grond dan een lipje aan de zijkant. Hoe meer metaaloppervlak onder de antenne, hoe beter de straling.</div>
+          </div>
+          <div class="exp-card a4">
+            <div class="exp-label">Veiligheid</div>
+            <div class="exp-title">Nooit tijdens het rijden</div>
+            <div class="exp-text">Stationair geparkeerd, of een passagier laat opereren. De verkeersregels gelden ook — en terecht — voor radioamateurs.</div>
+          </div>
+        </div>
+        <div class="exp-grid" style="display:flex;flex-direction:column;gap:1rem;">
+          <div class="exp-card a3">
+            <div class="exp-label">Repeaters</div>
+            <div class="exp-title">De kaart van de ether</div>
+            <div class="exp-text">Via RepeaterBook vind je alle actieve repeaters op jouw route. Handig om te testen of je signaal doorkomt — en om andere amateurs te ontmoeten onderweg.</div>
+          </div>
+          <div class="exp-card a4">
+            <div class="exp-label">RFI in de auto</div>
+            <div class="exp-title">Ruis uit de boordcomputer</div>
+            <div class="exp-text">Moderne auto's zijn een zee van digitale ruis. Ferrieten op de voedingskabel van de radio en de antennekabel helpen enorm op HF.</div>
+          </div>
+          <div class="exp-card a5">
+            <div class="exp-label">Planning</div>
+            <div class="exp-title">Vaste haltes maken het leuker</div>
+            <div class="exp-text">Parkeer op een verhoogd punt of open terrein. Hogere ligging = meer bereik. Een gepland POTA-park langs de route is altijd een bonus.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div id="site-footer-mount"></div>
+<script src="data/nav.js"></script>
+<script>mountNav('mobiel.html');</script>
+</body>
+</html>

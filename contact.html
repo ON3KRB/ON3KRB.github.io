@@ -1,6 +1,159 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ON3FTB — Contact</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .cc-grid{display:flex;flex-direction:column;gap:.85rem;}
+    .cc{display:flex;align-items:center;gap:1.1rem;background:var(--c-surface);border:1px solid var(--c-border);border-radius:13px;padding:1.2rem 1.5rem;text-decoration:none;transition:border-color var(--t),box-shadow var(--t),transform var(--t);}
+    .cc:hover{border-color:var(--c-primary);box-shadow:var(--glow-sm);transform:translateX(5px);}
+    .cc-icon{width:42px;height:42px;border-radius:9px;background:var(--c-surface-2);border:1px solid var(--c-border);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+    .cc-label{font-family:var(--f-mono);font-size:.58rem;letter-spacing:.14rem;text-transform:uppercase;color:var(--c-text-3);margin-bottom:.2rem;}
+    .cc-val{font-family:var(--f-mono);font-size:.82rem;color:var(--c-primary);}
 
----
-layout: default
-title: Contact
----
-<section class="container"><h1>Contact</h1></section>
+    .qsl-box{background:var(--c-surface);border:1px solid var(--c-border-h);border-radius:16px;padding:1.75rem;margin-top:1.5rem;}
+    .qsl-title{font-family:var(--f-display);font-size:.9rem;font-weight:700;color:var(--c-text);margin-bottom:1rem;}
+    .qsl-row{display:flex;align-items:center;gap:1rem;margin-bottom:.5rem;}
+    .qsl-m{font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;color:var(--c-text-3);width:70px;}
+    .qsl-badge{font-family:var(--f-mono);font-size:.62rem;padding:2px 8px;border-radius:3px;color:var(--c-primary);border:1px solid var(--c-border-h);}
+
+    .social-block{background:var(--c-surface);border:1px solid var(--c-border);border-radius:16px;padding:1.75rem;margin-top:1.5rem;}
+    .sb-title{font-family:var(--f-display);font-size:.9rem;font-weight:700;color:var(--c-text);margin-bottom:.4rem;}
+    .sb-sub{font-size:.82rem;color:var(--c-text-2);margin-bottom:1.25rem;}
+    .soc-btns{display:flex;flex-direction:column;gap:.6rem;}
+    .soc-btn{display:flex;align-items:center;gap:.85rem;padding:.8rem 1.1rem;border-radius:10px;border:1px solid var(--c-border);text-decoration:none;transition:all var(--t);}
+    .soc-btn svg{width:20px;height:20px;flex-shrink:0;}
+    .soc-name{font-family:var(--f-mono);font-size:.72rem;font-weight:700;display:block;color:var(--c-text);}
+    .soc-desc{font-family:var(--f-mono);font-size:.6rem;color:var(--c-text-3);}
+    .soc-btn.ig svg{fill:#e1306c;}.soc-btn.ig:hover{border-color:#e1306c;box-shadow:0 0 12px rgba(225,48,108,.25);}
+    .soc-btn.yt svg{fill:#ff0000;}.soc-btn.yt:hover{border-color:#ff0000;box-shadow:0 0 12px rgba(255,0,0,.2);}
+    .soc-btn.tt svg{fill:#69c9d0;}.soc-btn.tt:hover{border-color:#69c9d0;box-shadow:0 0 12px rgba(105,201,208,.25);}
+
+    .form-group{margin-bottom:1.2rem;}
+    .form-label{font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12rem;text-transform:uppercase;color:var(--c-text-3);display:block;margin-bottom:.4rem;}
+    .form-input,.form-textarea,.form-select{width:100%;background:var(--c-surface);border:1px solid var(--c-border);color:var(--c-text);font-family:var(--f-body);font-size:.9rem;padding:.65rem 1rem;border-radius:8px;outline:none;transition:border-color var(--t),box-shadow var(--t);}
+    .form-input:focus,.form-textarea:focus,.form-select:focus{border-color:var(--c-primary);box-shadow:var(--glow-sm);}
+    .form-input::placeholder,.form-textarea::placeholder{color:var(--c-text-3);}
+    .form-textarea{resize:vertical;min-height:120px;line-height:1.6;}
+    .form-select option{background:var(--c-surface);}
+  </style>
+</head>
+<body class="grid-bg">
+<div id="site-nav-mount"></div>
+<div class="page-wrap">
+
+  <div class="page-hero" data-bg-text="CONTACT">
+    <div class="container page-hero-inner">
+      <div class="hero-tag a1">ON3FTB · Contact</div>
+      <h1 class="hero-title a2">Neem <span>contact</span> op</h1>
+      <p class="hero-sub a3">QSL verzoek, vraag over radio, of gewoon 73 — ik hoor graag van je.</p>
+      <div class="hero-stats a4">
+        <div class="hstat"><div class="hstat-num">eQSL</div><div class="hstat-lbl">Actief</div></div>
+        <div class="hstat"><div class="hstat-num">LoTW</div><div class="hstat-lbl">Actief</div></div>
+        <div class="hstat"><div class="hstat-num">Buro</div><div class="hstat-lbl">Papier QSL</div></div>
+        <div class="hstat"><div class="hstat-num">73</div><div class="hstat-lbl">Always</div></div>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="two-col">
+
+        <!-- Links -->
+        <div>
+          <div class="section-label a1">Directe links</div>
+          <div class="cc-grid a1">
+            <a class="cc" href="https://www.qrz.com/db/ON3FTB" target="_blank">
+              <div class="cc-icon">📡</div><div><div class="cc-label">QRZ.com</div><div class="cc-val">qrz.com/db/ON3FTB</div></div>
+            </a>
+            <a class="cc" href="https://eqsl.cc" target="_blank">
+              <div class="cc-icon">✉️</div><div><div class="cc-label">eQSL</div><div class="cc-val">ON3FTB op eQSL.cc</div></div>
+            </a>
+            <a class="cc" href="https://clublog.org" target="_blank">
+              <div class="cc-icon">📊</div><div><div class="cc-label">ClubLog</div><div class="cc-val">Log & DXCC tracking</div></div>
+            </a>
+            <a class="cc" href="mailto:jouw@email.be">
+              <div class="cc-icon">@</div><div><div class="cc-label">E-mail</div><div class="cc-val">jouw@email.be</div></div>
+            </a>
+          </div>
+
+          <div class="qsl-box a2">
+            <div class="qsl-title">QSL methodes</div>
+            <div class="qsl-row"><span class="qsl-m">eQSL</span><span class="qsl-badge">✓ Actief</span></div>
+            <div class="qsl-row"><span class="qsl-m">LoTW</span><span class="qsl-badge">✓ Actief</span></div>
+            <div class="qsl-row"><span class="qsl-m">Papier</span><span class="qsl-badge">✓ Via buro</span></div>
+            <div class="qsl-row"><span class="qsl-m">Direct</span><span class="qsl-badge">✓ + SAE</span></div>
+          </div>
+
+          <div class="social-block a3">
+            <div class="sb-title">Volg op sociale media</div>
+            <div class="sb-sub">Educatieve content over radioamateurisme voor iedereen.</div>
+            <div class="soc-btns">
+              <a class="soc-btn ig" href="#instagram" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                <div><span class="soc-name">Instagram</span><span class="soc-desc">Foto's shack, portabel, antennes</span></div>
+              </a>
+              <a class="soc-btn yt" href="#youtube" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+                <div><span class="soc-name">YouTube</span><span class="soc-desc">Video's, uitleg, ervaringen</span></div>
+              </a>
+              <a class="soc-btn tt" href="#tiktok" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                <div><span class="soc-name">TikTok</span><span class="soc-desc">Korte clips, morse demo's</span></div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulier -->
+        <div class="a3">
+          <div class="section-label">Formulier</div>
+          <h2 class="section-title" style="font-size:1.5rem;margin-bottom:1.5rem;">Stuur een bericht</h2>
+          <div class="form-group">
+            <label class="form-label">Naam of callsign *</label>
+            <input class="form-input" type="text" id="fNaam" placeholder="DL4KW of Klaus">
+          </div>
+          <div class="form-group">
+            <label class="form-label">E-mail *</label>
+            <input class="form-input" type="email" id="fEmail" placeholder="jouw@email.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Onderwerp</label>
+            <select class="form-select" id="fOnderwerp">
+              <option value="QSL">QSL verzoek</option>
+              <option value="Vraag">Vraag over radio</option>
+              <option value="Samenwerking">Samenwerking / content</option>
+              <option value="Algemeen">Algemeen</option>
+              <option value="73">Gewoon 73!</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bericht *</label>
+            <textarea class="form-textarea" id="fBericht" placeholder="Je bericht hier…"></textarea>
+          </div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="verzend()">Verstuur bericht →</button>
+          <div id="ok" style="display:none;margin-top:1rem;background:rgba(0,255,136,.08);border:1px solid var(--c-border-h);border-radius:10px;padding:1rem;text-align:center;font-family:var(--f-mono);font-size:.75rem;color:var(--c-primary);">✓ Mailto geopend — 73 DE ON3FTB!</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div id="site-footer-mount"></div>
+<script src="data/nav.js"></script>
+<script>
+mountNav('contact.html');
+function verzend(){
+  const n=document.getElementById('fNaam').value;
+  const e=document.getElementById('fEmail').value;
+  const b=document.getElementById('fBericht').value;
+  const o=document.getElementById('fOnderwerp').value;
+  if(!n||!e||!b){alert('Vul alle verplichte velden in.');return;}
+  window.location.href=`mailto:jouw@email.be?subject=ON3FTB — ${encodeURIComponent(o)}&body=${encodeURIComponent('Van: '+n+' ('+e+')\n\n'+b)}`;
+  document.getElementById('ok').style.display='block';
+}
+</script>
+</body>
+</html>
