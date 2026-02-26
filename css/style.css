@@ -439,6 +439,19 @@ body.landing { overflow: hidden; }
    }
 
 /* ========== Rijke tijdlijn ========== */
+/* Two column layout for rich timeline */
+.two-col {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
 .rich-timeline {
   position: relative;
   padding-left: 2.5rem;
