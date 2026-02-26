@@ -1,154 +1,254 @@
----
-layout: default
-title: ON3KRB — Kristof
-body_class: landing
-no_footer: true
----
-<style>
-/* ── LANDING-SPECIFIEK (pagina) ── */
-/* body overflow wordt via body.landing in css/style.css gezet */
-.radial-glow {
-  position: fixed;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  width: 700px; height: 700px;
-  background: radial-gradient(ellipse, rgba(0,255,136,0.055) 0%, transparent 65%);
-  pointer-events: none; z-index: 0;
-}
-.stage {
-  position: relative; z-index: 1;
-  height: calc(100vh - var(--nav-h));
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 2rem;
-  text-align: center;
-}
-.logo-wrap { margin-bottom: 1.2rem; animation: fadeUp 1s 0.2s ease both; }
-@keyframes fadeUp { from { opacity:0; transform: translateY(20px); } to { opacity:1; transform: translateY(0); } }
-.wave-1 { animation: wavePulse 1.8s 0s ease-in-out infinite; }
-.wave-2 { animation: wavePulse 1.8s 0.3s ease-in-out infinite; }
-.wave-3 { animation: wavePulse 1.8s 0.6s ease-in-out infinite; }
-@keyframes wavePulse { 0%,100%{opacity:0.85} 50%{opacity:0.15} }
-.callsign-hero {
-  font-family: var(--f-display);
-  font-size: clamp(3.5rem, 12vw, 7.5rem);
-  font-weight: 900;
-  letter-spacing: 0.35rem;
-  color: var(--c-primary);
-  text-shadow: var(--glow-lg);
-  line-height: 1;
-  animation: fadeUp 1s 0.35s ease both;
-  margin-bottom: 0.35rem;
-}
-.phonetic-line {
-  font-family: var(--f-mono);
-  font-size: clamp(0.6rem, 1.8vw, 0.8rem);
-  letter-spacing: 0.3rem;
-  color: var(--c-text-3);
-  text-transform: uppercase;
-  animation: fadeUp 1s 0.5s ease both;
-  margin-bottom: 2.5rem;
-}
-.morse-chars {
-  display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap;
-  margin-bottom: 1.2rem;
-  animation: fadeUp 1s 0.6s ease both;
-}
-.mc {
-  display:flex; flex-direction:column; align-items:center; gap:0.25rem;
-  padding: 0.55rem 0.7rem;
-  border: 1px solid var(--c-border);
-  border-radius: 8px; min-width: 48px;
-  background: var(--c-surface);
-  transition: all 0.08s;
-}
-.mc.active {
-  border-color: var(--c-primary);
-  background: rgba(0,255,136,0.08);
-  box-shadow: var(--glow-sm);
-}
-.mc .ltr {
-  font-family: var(--f-display); font-size: 1.1rem;
-  font-weight: 700; color: var(--c-text);
-}
-/* Accentueren van de letter (niet wijzigen) */
-.mc.active .ltr { color: var(--c-primary); }
-.mc .dts {
-  font-family: var(--f-mono); font-size: 0.72rem;
-  color: var(--c-cyan); letter-spacing: 0.08rem;
-}
-.led-wrap { margin-bottom: 1.2rem; animation: fadeUp 1s 0.65s ease both; }
-.led {
-  width: 18px; height: 18px; border-radius: 50%;
-  background: #0a1220;
-  border: 1.5px solid rgba(0,255,136,0.18);
-  margin: 0 auto; transition: all 0.045s;
-}
-.led.on {
-  background: var(--c-primary);
-  box-shadow: var(--glow-lg);
-  border-color: var(--c-primary);
-}
-.controls {
-  display:flex; align-items:center; gap:0.75rem;
-  flex-wrap:wrap; justify-content:center;
-  margin-bottom: 0.75rem;
-  animation: fadeUp 1s 0.75s ease both;
-}
-.btn-morse {
-  background: var(--c-primary); color: var(--c-bg);
-  font-family: var(--f-mono); font-size: 0.75rem;
-  font-weight: 700; letter-spacing: 0.15rem;
-  padding: 0.6rem 1.4rem; border:none;
-  border-radius: 7px; cursor:pointer;
-  transition: all var(--t);
-}
-.btn-morse:hover:not(:disabled) {
-  background:#fff; box-shadow: var(--glow-md); transform: translateY(-2px);
-}
-.btn-morse:disabled {
-  background: var(--c-surface); color: var(--c-text-3); cursor:not-allowed;
-}
-.speed-wrap {
-  display:flex; align-items:center; gap:0.4rem;
-  font-family: var(--f-mono); font-size: 0.62rem; color: var(--c-text-3);
-}
-input[type=range]{ accent-color: var(--c-primary); width: 90px; }
-.status-line {
-  font-family: var(--f-mono); font-size: 0.68rem;
-  color: var(--c-text-3); letter-spacing: 0.15rem;
-  min-height: 1.1rem; margin-bottom: 2rem;
-  animation: fadeUp 1s 0.8s ease both;
-}
-.enter-site {
-  display:inline-flex; align-items:center; gap:0.5rem;
-  font-family: var(--f-mono); font-size: 0.72rem;
-  letter-spacing: 0.22rem; text-transform: uppercase;
-  color: var(--c-text-3); text-decoration: none;
-  border: 1px solid var(--c-border);
-  padding: 0.65rem 1.8rem; border-radius: 8px;
-  transition: all 0.3s ease;
-  animation: fadeUp 1s 0.9s ease both;
-}
-.enter-site:hover {
-  color: var(--c-primary); border-color: var(--c-primary);
-  box-shadow: var(--glow-sm); letter-spacing: 0.3rem;
-}
-.enter-site .arr { transition: transform 0.25s ease; }
-.enter-site:hover .arr { transform: translateX(5px); }
-.bottom-label {
-  position: fixed; bottom: 1.2rem;
-  font-family: var(--f-mono); font-size: 0.58rem;
-  color: var(--c-text-3); letter-spacing: 0.18rem; opacity: 0.4;
-  z-index: 2;
-}
-</style>
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ON3FTB — Kristof</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── LANDING-SPECIFIEK ── */
+    body {
+      overflow: hidden; /* volledig scherm landing */
+    }
+
+    /* Radiale glow centrum */
+    .radial-glow {
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(ellipse, rgba(0,255,136,0.055) 0%, transparent 65%);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── STAGE ── */
+    .stage {
+      position: relative; z-index: 1;
+      height: calc(100vh - var(--nav-h));
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    /* Logo */
+    .logo-wrap {
+      margin-bottom: 1.2rem;
+      animation: fadeUp 1s 0.2s ease both;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Radiogolf pulse animatie */
+    .wave-1 { animation: wavePulse 1.8s 0s ease-in-out infinite; }
+    .wave-2 { animation: wavePulse 1.8s 0.3s ease-in-out infinite; }
+    .wave-3 { animation: wavePulse 1.8s 0.6s ease-in-out infinite; }
+
+    @keyframes wavePulse {
+      0%, 100% { opacity: 0.85; }
+      50%       { opacity: 0.15; }
+    }
+
+    /* Callsign */
+    .callsign-hero {
+      font-family: var(--f-display);
+      font-size: clamp(3.5rem, 12vw, 7.5rem);
+      font-weight: 900;
+      letter-spacing: 0.35rem;
+      color: var(--c-primary);
+      text-shadow: var(--glow-lg);
+      line-height: 1;
+      animation: fadeUp 1s 0.35s ease both;
+      margin-bottom: 0.35rem;
+    }
+
+    .phonetic-line {
+      font-family: var(--f-mono);
+      font-size: clamp(0.6rem, 1.8vw, 0.8rem);
+      letter-spacing: 0.3rem;
+      color: var(--c-text-3);
+      text-transform: uppercase;
+      animation: fadeUp 1s 0.5s ease both;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Morse karakterblokken */
+    .morse-chars {
+      display: flex; gap: 0.5rem;
+      justify-content: center; flex-wrap: wrap;
+      margin-bottom: 1.2rem;
+      animation: fadeUp 1s 0.6s ease both;
+    }
+
+    .mc {
+      display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--c-border);
+      border-radius: 8px; min-width: 48px;
+      background: var(--c-surface);
+      transition: all 0.08s;
+    }
+    .mc.active {
+      border-color: var(--c-primary);
+      background: rgba(0,255,136,0.08);
+      box-shadow: var(--glow-sm);
+    }
+    .mc .ltr {
+      font-family: var(--f-display); font-size: 1.1rem;
+      font-weight: 700; color: var(--c-text);
+    }
+    .mc.active .ltr { color: var(--c-primary); }
+    .mc .dts {
+      font-family: var(--f-mono); font-size: 0.72rem;
+      color: var(--c-cyan); letter-spacing: 0.08rem;
+    }
+
+    /* LED */
+    .led-wrap { margin-bottom: 1.2rem; animation: fadeUp 1s 0.65s ease both; }
+    .led {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: #0a1220;
+      border: 1.5px solid rgba(0,255,136,0.18);
+      margin: 0 auto; transition: all 0.045s;
+    }
+    .led.on {
+      background: var(--c-primary);
+      box-shadow: var(--glow-lg);
+      border-color: var(--c-primary);
+    }
+
+    /* Controls */
+    .controls {
+      display: flex; align-items: center; gap: 0.75rem;
+      flex-wrap: wrap; justify-content: center;
+      margin-bottom: 0.75rem;
+      animation: fadeUp 1s 0.75s ease both;
+    }
+
+    .btn-morse {
+      background: var(--c-primary); color: var(--c-bg);
+      font-family: var(--f-mono); font-size: 0.75rem;
+      font-weight: 700; letter-spacing: 0.15rem;
+      padding: 0.6rem 1.4rem; border: none;
+      border-radius: 7px; cursor: pointer;
+      transition: all var(--t);
+    }
+    .btn-morse:hover:not(:disabled) {
+      background: #fff; box-shadow: var(--glow-md); transform: translateY(-2px);
+    }
+    .btn-morse:disabled {
+      background: var(--c-surface); color: var(--c-text-3); cursor: not-allowed;
+    }
+
+    .speed-wrap {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-family: var(--f-mono); font-size: 0.62rem; color: var(--c-text-3);
+    }
+    input[type=range] { accent-color: var(--c-primary); width: 90px; }
+
+    /* Status */
+    .status-line {
+      font-family: var(--f-mono); font-size: 0.68rem;
+      color: var(--c-text-3); letter-spacing: 0.15rem;
+      min-height: 1.1rem; margin-bottom: 2rem;
+      animation: fadeUp 1s 0.8s ease both;
+    }
+
+    /* Enter knop */
+    .enter-site {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--f-mono); font-size: 0.72rem;
+      letter-spacing: 0.22rem; text-transform: uppercase;
+      color: var(--c-text-3); text-decoration: none;
+      border: 1px solid var(--c-border);
+      padding: 0.65rem 1.8rem; border-radius: 8px;
+      transition: all 0.3s ease;
+      animation: fadeUp 1s 0.9s ease both;
+    }
+    .enter-site:hover {
+      color: var(--c-primary); border-color: var(--c-primary);
+      box-shadow: var(--glow-sm); letter-spacing: 0.3rem;
+    }
+    .enter-site .arr { transition: transform 0.25s ease; }
+    .enter-site:hover .arr { transform: translateX(5px); }
+
+    /* Bottom label */
+    .bottom-label {
+      position: fixed; bottom: 1.2rem;
+      font-family: var(--f-mono); font-size: 0.58rem;
+      color: var(--c-text-3); letter-spacing: 0.18rem; opacity: 0.4;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body class="grid-bg">
+
+<!-- NAVIGATIE -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <!-- Brand -->
+    <a class="nav-brand" href="index.html">
+      <svg width="28" height="32" viewBox="0 0 28 32" fill="none">
+        <defs>
+          <filter id="ng">
+            <feGaussianBlur stdDeviation="1.5" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <polygon points="14,2 26,28 2,28" fill="none" stroke="#00ff88" stroke-width="1.2" opacity="0.2"/>
+        <line x1="14" y1="2" x2="14" y2="28" stroke="#00ff88" stroke-width="1.8" filter="url(#ng)"/>
+        <line x1="8" y1="14" x2="20" y2="14" stroke="#00ff88" stroke-width="1.3"/>
+        <line x1="5" y1="21" x2="23" y2="21" stroke="#00ff88" stroke-width="1.3"/>
+        <path d="M14,2 m6,-1 a7,7 0 0,1 0,10" fill="none" stroke="#00ff88" stroke-width="1.6" class="wave-1"/>
+        <path d="M14,2 m9,-2 a11,11 0 0,1 0,16" fill="none" stroke="#00ff88" stroke-width="1.2" class="wave-2" opacity="0.55"/>
+        <circle cx="14" cy="2" r="2" fill="#00ff88" filter="url(#ng)"/>
+      </svg>
+      <span class="nav-brand-call">ON3FTB</span>
+    </a>
+
+    <!-- Desktop links -->
+    <ul class="nav-links">
+      <li data-morse=".-"><a href="index.html" class="active">Home</a></li>
+      <li data-morse="---"><a href="over.html">Over mij</a></li>
+      <li data-morse="--"><a href="materiaal.html">Materiaal</a></li>
+      <li data-morse="-..."><a href="blog.html">Blog</a></li>
+      <li data-morse="--.-"><a href="qso.html">QSO Log</a></li>
+      <li data-morse="-.-."><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <!-- Klok -->
+    <div class="nav-right">
+      <div class="nav-clock" id="navClock">--:--:-- UTC</div>
+    </div>
+
+    <!-- Hamburger -->
+    <button class="nav-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobiel drawer -->
+<div class="nav-drawer" id="drawer">
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="over.html">Over mij</a></li>
+    <li><a href="materiaal.html">Materiaal</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="qso.html">QSO Log</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</div>
 
 <!-- RADIALE GLOW -->
 <div class="radial-glow"></div>
 
 <!-- HOOFDSCENE -->
 <div class="stage">
+
   <!-- Geometrisch logo -->
   <div class="logo-wrap">
     <svg width="110" height="110" viewBox="0 0 110 110" fill="none">
@@ -171,14 +271,16 @@ input[type=range]{ accent-color: var(--c-primary); width: 90px; }
   </div>
 
   <!-- Callsign -->
-  <div class="callsign-hero">ON3KRB</div>
-  <div class="phonetic-line">Kilo · Romeo · Bravo</div>
+  <div class="callsign-hero">ON3FTB</div>
+  <div class="phonetic-line">Foxtrot &middot; Tango &middot; Bravo</div>
 
   <!-- Morse karakterblokken -->
   <div class="morse-chars" id="morseChars"></div>
 
   <!-- LED -->
-  <div class="led-wrap"><div class="led" id="led"></div></div>
+  <div class="led-wrap">
+    <div class="led" id="led"></div>
+  </div>
 
   <!-- Controls -->
   <div class="controls">
@@ -194,14 +296,35 @@ input[type=range]{ accent-color: var(--c-primary); width: 90px; }
   <div class="status-line" id="status"></div>
 
   <!-- Enter site -->
-  <a class="enter-site" href="{ '/inner.html' | relative_url }">ENTER SITE <span class="arr">→</span></a>
+  <a class="enter-site" href="inner.html">
+    ENTER SITE <span class="arr">→</span>
+  </a>
+
 </div>
 
-<div class="bottom-label">73 DE ON3KRB · BELGIË</div>
+<div class="bottom-label">73 DE ON3FTB &nbsp;·&nbsp; BELGIË</div>
 
 <script>
-// ── MORSE (landing) ──
-const CALL = 'ON3KRB';
+/* ── KLOK ── */
+function updateClock() {
+  const now = new Date();
+  const hh = String(now.getUTCHours()).padStart(2,'0');
+  const mm = String(now.getUTCMinutes()).padStart(2,'0');
+  const ss = String(now.getUTCSeconds()).padStart(2,'0');
+  document.getElementById('navClock').textContent = `${hh}:${mm}:${ss} UTC`;
+}
+updateClock(); setInterval(updateClock, 1000);
+
+/* ── HAMBURGER ── */
+const burger = document.getElementById('burger');
+const drawer = document.getElementById('drawer');
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  drawer.classList.toggle('open');
+});
+
+/* ── MORSE ── */
+const CALL = 'ON3FTB';
 const MORSE = {
   A:'.-',B:'-...',C:'-.-.',D:'-..',E:'.',F:'..-.',G:'--.',H:'....',I:'..',J:'.---',
   K:'-.-',L:'.-..',M:'--',N:'-.',O:'---',P:'.--.',Q:'--.-',R:'.-.',S:'...',T:'-',
@@ -209,6 +332,7 @@ const MORSE = {
   '0':'-----','1':'.----','2':'..---','3':'...--','4':'....-','5':'.....',
   '6':'-....','7':'--...','8':'---..','9':'----.'
 };
+
 // Bouw chars
 const charsEl = document.getElementById('morseChars');
 CALL.split('').forEach((c,i) => {
@@ -217,15 +341,19 @@ CALL.split('').forEach((c,i) => {
   d.innerHTML = `<span class="ltr">${c}</span><span class="dts">${MORSE[c]||''}</span>`;
   charsEl.appendChild(d);
 });
+
 let audioCtx = null, playing = false, stopFlag = false;
+
 function wpm() { return [8,12,17,22,28][+document.getElementById('speed').value-1]; }
-function dot() { return 1200 / wpm(); }
+function dot()  { return 1200 / wpm(); }
+
 function setActive(i) {
   document.querySelectorAll('.mc').forEach(e => e.classList.remove('active'));
   if (i >= 0) document.getElementById('mc'+i)?.classList.add('active');
 }
 function setLed(on) { document.getElementById('led').className = 'led'+(on?' on':''); }
 function setStatus(t) { document.getElementById('status').textContent = t; }
+
 function sleep(ms) {
   return new Promise(r => {
     const s = Date.now();
@@ -233,9 +361,10 @@ function sleep(ms) {
     t();
   });
 }
+
 function beep(dur) {
   return new Promise(r => {
-    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
     const o = audioCtx.createOscillator(), g = audioCtx.createGain();
     o.connect(g); g.connect(audioCtx.destination);
     o.frequency.value = 700; o.type = 'sine';
@@ -248,17 +377,20 @@ function beep(dur) {
     setTimeout(r, dur);
   });
 }
+
 async function playMorse() {
   if (playing) return;
   playing = true; stopFlag = false;
   document.getElementById('playBtn').disabled = true;
   document.getElementById('stopBtn').disabled = false;
+
   const d = dot(), dash = d*3, sym = d, chr = d*3;
   const chars = CALL.split('');
+
   for (let ci = 0; ci < chars.length; ci++) {
     if (stopFlag) break;
     setActive(ci);
-    setStatus('Sending: ' + chars[ci] + ' ' + (MORSE[chars[ci]]||''));
+    setStatus('Sending: ' + chars[ci] + '  ' + (MORSE[chars[ci]]||''));
     const syms = (MORSE[chars[ci]]||'').split('');
     for (let si = 0; si < syms.length; si++) {
       if (stopFlag) break;
@@ -269,19 +401,22 @@ async function playMorse() {
     }
     if (ci < chars.length-1) await sleep(chr);
   }
+
   setActive(-1); setLed(false);
-  setStatus(stopFlag ? '' : '✓ ON3KRB — 73!');
+  setStatus(stopFlag ? '' : '✓ ON3FTB — 73!');
   document.getElementById('playBtn').disabled = false;
   document.getElementById('stopBtn').disabled = true;
   playing = false;
 }
+
 function stopMorse() {
   stopFlag = true; setLed(false); setStatus('');
   document.getElementById('playBtn').disabled = false;
   document.getElementById('stopBtn').disabled = true;
   playing = false;
 }
-// Auto-play na laden
+
+/* Auto-play na laden */
 window.addEventListener('load', () => {
   setTimeout(() => {
     playMorse().catch(() => {
@@ -292,3 +427,5 @@ window.addEventListener('load', () => {
   }, 1400);
 });
 </script>
+</body>
+</html>
