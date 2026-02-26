@@ -120,6 +120,11 @@ input[type=range]{ accent-color: var(--c-primary); width: 90px; }
   min-height: 1.1rem; margin-bottom: 2rem;
   animation: fadeUp 1s 0.8s ease both;
 }
+.enter-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}  
 .enter-site {
   display:inline-flex; align-items:center; gap:0.5rem;
   font-family: var(--f-mono); font-size: 0.72rem;
@@ -150,11 +155,7 @@ input[type=range]{ accent-color: var(--c-primary); width: 90px; }
   white-space: nowrap;
   pointer-events: none;
 }
-.enter-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* ✅ sleutel */
-}
+
 
   
 </style>
@@ -213,7 +214,7 @@ input[type=range]{ accent-color: var(--c-primary); width: 90px; }
     <a class="enter-site" href="{ '/inner.html' | relative_url }">
       ENTER SITE <span class="arr">→</span>
     </a>
-    <div class="bottom-label">73 DE ON3KRB · BELGIË</div>
+    <div class="enter-site" "bottom-label">73 DE ON3KRB · BELGIË</div>
   </div>
 
 
