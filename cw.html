@@ -9,7 +9,24 @@ extra_css:
   - /css/cw.css
 ---
 <style>
+.td-phrase { 
+  padding: 0.7rem 1rem; 
+  font-family: var(--f-mono); 
+  font-size: 0.72rem; 
+  color: var(--c-text); 
+  letter-spacing: 0.06rem; 
+  white-space: normal;       /* ← was nowrap */
+  word-break: break-word; 
+  max-width: 160px; 
+  min-width: 120px; 
+  line-height: 1.6; 
+}
 
+.td-morse {
+  padding: 0.6rem 1rem;
+  vertical-align: middle;
+  width: 99%;                /* ← neemt alle resterende ruimte */
+}
 </style>
 
 <div class="page-wrap-inner container">
