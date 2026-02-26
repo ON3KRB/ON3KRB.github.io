@@ -154,6 +154,22 @@ input[type=range]{ accent-color: var(--c-primary); width: 90px; }
 
   white-space: nowrap;
   pointer-events: none;
+
+  
+.enter-site--label {
+  margin-top: 1.2rem;      /* ✅ ruimte tussen knop en label */
+  padding: 0;              /* geen knop-gevoel */
+  border: none;            /* ✅ geen groen kader */
+
+  font-size: 0.55rem;      /* iets kleiner */
+  letter-spacing: 0.22rem;
+
+  color: var(--c-text-3);
+  opacity: 0.7;
+
+  pointer-events: none;    /* geen hover/click */
+}
+
 }
 
 
@@ -214,7 +230,8 @@ input[type=range]{ accent-color: var(--c-primary); width: 90px; }
     <a class="enter-site" href="{ '/inner.html' | relative_url }">
       ENTER SITE <span class="arr">→</span>
     </a>
-    <div class="enter-site" style="size:8px">73 DE ON3KRB · BELGIË</div>
+  
+    <div class="enter-site enter-site--label">73 DE ON3KRB · BELGIË</div>
   </div>
 
 
