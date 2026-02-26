@@ -1,26 +1,37 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <title>{{ page.title }}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} — ON3KRB</title>
   <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
+<body class="grid-bg">
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <a href="/inner.html" class="nav-brand">
+        <span class="nav-brand-call">ON3KRB</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="/inner.html">Home</a></li>
+        <li><a href="/blog.html">Blog</a></li>
+        <li><a href="/shack.html">Shack</a></li>
+        <li><a href="/mobile.html">Mobiel</a></li>
+        <li><a href="/portable.html">Portabel</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-  <header>
-    <nav>
-      <a href="/inner.html">Home</a>
-      <a href="/blog.html">Blog</a>
-      <a href="/shak.html">Shak</a>
-      <a href="/mobile.html">Mobile</a>
-      <a href="/portable.html">Portable</a>
-      <a href="/contact.html">Contact</a>
-    </nav>
-  </header>
-
-  <main>
+  <main class="page-wrap">
     {{ content }}
   </main>
 
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-call">ON3KRB</div>
+      <div class="footer-73">73 DE ON3KRB · België</div>
+    </div>
+  </footer>
 </body>
 </html>
