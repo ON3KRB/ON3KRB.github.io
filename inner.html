@@ -1,0 +1,21 @@
+---
+layout: default
+title: About
+---
+
+<h2>About me</h2>
+<p>Coming soon.</p>
+
+<h2>Timeline</h2>
+<p>Coming soon.</p>
+
+<h2>Latest blog posts</h2>
+<ul>
+  {% for post in site.posts limit:3 %}
+    <li>
+      <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+<a href="/blog.html">View all posts</a>
