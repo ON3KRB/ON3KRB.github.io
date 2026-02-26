@@ -1,5 +1,5 @@
 /* ============================================================
-   ON3KRB — Design System  |  "Dark Signal"
+   ON3FTB — Design System  |  "Dark Signal"
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=Share+Tech+Mono&display=swap');
@@ -81,12 +81,11 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0 2rem;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 /* Brand */
 .nav-brand {
- margin-right: 0.75rem;
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -401,13 +400,3 @@ body {
   .container, .container--narrow { padding: 0 1rem; }
   .stat-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-/* ── Jekyll / content helpers ── */
-main { display: block; }
-.prose { color: var(--c-text-2); font-weight: 300; }
-.prose h1, .prose h2, .prose h3 { color: var(--c-text); font-family: var(--f-display); }
-.prose a { color: var(--c-primary); text-decoration: none; }
-.prose a:hover { text-shadow: var(--glow-sm); }
-
-/* Landing body helper (index) */
-body.landing { overflow: hidden; }
