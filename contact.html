@@ -13,7 +13,7 @@ extra_js:
     <div class="anim-1">
       <div class="section-label">ON3KRB</div>
       <h1 class="section-title">Contact &amp; Links</h1>
-      <p class="section-sub">Neem contact op, check mijn profiel of genereer een persoonlijke QSL-kaart voor onze QSO.</p>
+      <p class="section-sub">Get in touch, check my profile or generate a personalised QSL card for our QSO.</p>
     </div>
 
     <!-- ── CONTACT TILES ── -->
@@ -23,13 +23,13 @@ extra_js:
         <div class="tile-icon">📡</div>
         <div class="tile-label">QRZ.com</div>
         <div class="tile-value">ON3KRB</div>
-        <div class="tile-sub">Logboek &amp; biografie</div>
+        <div class="tile-sub">Logbook &amp; biography</div>
       </a>
 
       <a class="contact-tile" href="https://www.uba.be/" target="_blank" rel="noopener">
         <div class="tile-icon">🇧🇪</div>
         <div class="tile-label">UBA</div>
-        <div class="tile-value">Lid</div>
+        <div class="tile-value">Member</div>
         <div class="tile-sub">Union Belge des Amateurs</div>
       </a>
 
@@ -37,14 +37,14 @@ extra_js:
         <div class="tile-icon">🏆</div>
         <div class="tile-label">LoTW</div>
         <div class="tile-value">ARRL Logbook</div>
-        <div class="tile-sub">eQSL bevestigingen</div>
+        <div class="tile-sub">eQSL confirmations</div>
       </a>
 
       <a class="contact-tile" href="https://www.eqsl.cc/" target="_blank" rel="noopener">
         <div class="tile-icon">📬</div>
         <div class="tile-label">eQSL</div>
         <div class="tile-value">ON3KRB</div>
-        <div class="tile-sub">Digitale QSL kaarten</div>
+        <div class="tile-sub">Digital QSL cards</div>
       </a>
 
       <a class="contact-tile" href="https://www.hamqth.com/" target="_blank" rel="noopener">
@@ -58,7 +58,7 @@ extra_js:
         <div class="tile-icon">💻</div>
         <div class="tile-label">GitHub</div>
         <div class="tile-value">ON3KRB</div>
-        <div class="tile-sub">Code &amp; projecten</div>
+        <div class="tile-sub">Code &amp; projects</div>
       </a>
 
     </div>
@@ -74,12 +74,12 @@ extra_js:
     <div class="qsl-intro anim-3">
       <div>
         <div class="section-label">QSL Card Generator</div>
-        <h2 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);">Genereer jouw persoonlijke QSL-kaart</h2>
+        <h2 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);">Generate your personal QSL card</h2>
         <p class="section-sub" style="font-size:0.92rem;">
-          Vul hieronder de QSO-gegevens in. De kaart wordt live gegenereerd en kan je downloaden als PNG — klaar om af te drukken of digitaal te versturen.
+          Fill in the QSO details below. The card is generated live and can be downloaded as a PNG — ready to print or share digitally.
         </p>
       </div>
-      <div class="qsl-badge">Gratis · Geen registratie</div>
+      <div class="qsl-badge">Free · No registration</div>
     </div>
 
     <div class="qsl-layout anim-4">
@@ -87,16 +87,16 @@ extra_js:
       <!-- ── FORM ── -->
       <div class="qsl-form-panel">
 
-        <div class="form-section-label">Jouw gegevens</div>
+        <div class="form-section-label">Your details</div>
 
         <div class="form-row">
           <div class="fld">
-            <label for="inp-call">Jouw callsign</label>
+            <label for="inp-call">Your callsign</label>
             <input id="inp-call" type="text" placeholder="PD0ABC" maxlength="10" autocomplete="off" spellcheck="false">
           </div>
           <div class="fld">
-            <label for="inp-name">Jouw naam</label>
-            <input id="inp-name" type="text" placeholder="Jan" maxlength="20" autocomplete="off">
+            <label for="inp-name">Your name</label>
+            <input id="inp-name" type="text" placeholder="John" maxlength="20" autocomplete="off">
           </div>
         </div>
 
@@ -104,11 +104,11 @@ extra_js:
 
         <div class="form-row">
           <div class="fld">
-            <label for="inp-date">Datum</label>
+            <label for="inp-date">Date</label>
             <input id="inp-date" type="date">
           </div>
           <div class="fld">
-            <label for="inp-utc">Tijd (UTC)</label>
+            <label for="inp-utc">Time (UTC)</label>
             <input id="inp-utc" type="time" placeholder="14:32">
           </div>
         </div>
@@ -149,7 +149,7 @@ extra_js:
 
         <div class="form-row full">
           <div class="fld">
-            <label for="inp-rst">RST ontvangen</label>
+            <label for="inp-rst">RST received</label>
             <input id="inp-rst" type="text" placeholder="599" maxlength="5" autocomplete="off">
           </div>
         </div>
@@ -171,7 +171,7 @@ extra_js:
           <canvas id="qslCanvas"></canvas>
         </div>
         <p style="font-family:var(--f-mono);font-size:0.62rem;color:var(--c-text-3);letter-spacing:0.1rem;">
-          FORMAAT: 148 × 105 MM  ·  RESOLUTIE: 1480 × 1050 PX  ·  PNG
+          FORMAT: 148 × 105 MM  ·  RESOLUTION: 1480 × 1050 PX  ·  PNG
         </p>
       </div>
 
@@ -180,4 +180,4 @@ extra_js:
 </section>
 
 <!-- ── DOWNLOAD TOAST ── -->
-<div class="dl-toast" id="dlToast">✓ QSL Card gedownload!</div>
+<div class="dl-toast" id="dlToast">✓ QSL Card downloaded!</div>
