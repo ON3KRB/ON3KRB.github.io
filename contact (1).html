@@ -1,0 +1,183 @@
+---
+layout: default
+title: Contact
+extra_css:
+  - /css/contact.css
+extra_js:
+  - /js/contact.js
+---
+
+<section class="contact-hero">
+  <div class="container">
+
+    <div class="anim-1">
+      <div class="section-label">ON3KRB</div>
+      <h1 class="section-title">Contact &amp; Links</h1>
+      <p class="section-sub">Get in touch, check my profile or generate a personalised QSL card for our QSO.</p>
+    </div>
+
+    <!-- ── CONTACT TILES ── -->
+    <div class="contact-grid anim-2">
+
+      <a class="contact-tile" href="https://www.qrz.com/db/ON3KRB" target="_blank" rel="noopener">
+        <div class="tile-icon">📡</div>
+        <div class="tile-label">QRZ.com</div>
+        <div class="tile-value">ON3KRB</div>
+        <div class="tile-sub">Logbook &amp; biography</div>
+      </a>
+
+      <a class="contact-tile" href="https://www.uba.be/" target="_blank" rel="noopener">
+        <div class="tile-icon">🇧🇪</div>
+        <div class="tile-label">UBA</div>
+        <div class="tile-value">Member</div>
+        <div class="tile-sub">Union Belge des Amateurs</div>
+      </a>
+
+      <a class="contact-tile" href="https://lotw.arrl.org/" target="_blank" rel="noopener">
+        <div class="tile-icon">🏆</div>
+        <div class="tile-label">LoTW</div>
+        <div class="tile-value">ARRL Logbook</div>
+        <div class="tile-sub">eQSL confirmations</div>
+      </a>
+
+      <a class="contact-tile" href="https://www.eqsl.cc/" target="_blank" rel="noopener">
+        <div class="tile-icon">📬</div>
+        <div class="tile-label">eQSL</div>
+        <div class="tile-value">ON3KRB</div>
+        <div class="tile-sub">Digital QSL cards</div>
+      </a>
+
+      <a class="contact-tile" href="https://www.hamqth.com/" target="_blank" rel="noopener">
+        <div class="tile-icon">🌍</div>
+        <div class="tile-label">HamQTH</div>
+        <div class="tile-value">ON3KRB</div>
+        <div class="tile-sub">Ham radio directory</div>
+      </a>
+
+      <a class="contact-tile" href="https://github.com/ON3KRB" target="_blank" rel="noopener">
+        <div class="tile-icon">💻</div>
+        <div class="tile-label">GitHub</div>
+        <div class="tile-value">ON3KRB</div>
+        <div class="tile-sub">Code &amp; projects</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<hr class="section-divider">
+
+<!-- ── QSL GENERATOR ── -->
+<section class="qsl-section">
+  <div class="container">
+
+    <div class="qsl-intro anim-3">
+      <div>
+        <div class="section-label">QSL Card Generator</div>
+        <h2 class="section-title" style="font-size:clamp(1.4rem,3vw,2rem);">Generate your personal QSL card</h2>
+        <p class="section-sub" style="font-size:0.92rem;">
+          Fill in the QSO details below. The card is generated live and can be downloaded as a PNG — ready to print or share digitally.
+        </p>
+      </div>
+      <div class="qsl-badge">Free · No registration</div>
+    </div>
+
+    <div class="qsl-layout anim-4">
+
+      <!-- ── FORM ── -->
+      <div class="qsl-form-panel">
+
+        <div class="form-section-label">Your details</div>
+
+        <div class="form-row">
+          <div class="fld">
+            <label for="inp-call">Your callsign</label>
+            <input id="inp-call" type="text" placeholder="PD0ABC" maxlength="10" autocomplete="off" spellcheck="false">
+          </div>
+          <div class="fld">
+            <label for="inp-name">Your name</label>
+            <input id="inp-name" type="text" placeholder="John" maxlength="20" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="form-section-label">QSO Details</div>
+
+        <div class="form-row">
+          <div class="fld">
+            <label for="inp-date">Date</label>
+            <input id="inp-date" type="date">
+          </div>
+          <div class="fld">
+            <label for="inp-utc">Time (UTC)</label>
+            <input id="inp-utc" type="time" placeholder="14:32">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="fld">
+            <label for="inp-band">Band</label>
+            <select id="inp-band">
+              <option value="160M">160M</option>
+              <option value="80M">80M</option>
+              <option value="40M">40M</option>
+              <option value="30M">30M</option>
+              <option value="20M" selected>20M</option>
+              <option value="17M">17M</option>
+              <option value="15M">15M</option>
+              <option value="12M">12M</option>
+              <option value="10M">10M</option>
+              <option value="6M">6M</option>
+              <option value="2M">2M</option>
+              <option value="70CM">70CM</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label for="inp-mode">Mode</label>
+            <select id="inp-mode">
+              <option value="SSB" selected>SSB</option>
+              <option value="CW">CW</option>
+              <option value="FT8">FT8</option>
+              <option value="FT4">FT4</option>
+              <option value="DIGI">DIGI</option>
+              <option value="AM">AM</option>
+              <option value="FM">FM</option>
+              <option value="RTTY">RTTY</option>
+              <option value="JS8">JS8</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row full">
+          <div class="fld">
+            <label for="inp-rst">RST received</label>
+            <input id="inp-rst" type="text" placeholder="599" maxlength="5" autocomplete="off">
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-generate" id="btnDownload">
+          ⬇ Download QSL Card (PNG)
+        </button>
+
+        <button class="btn btn-ghost btn-generate" id="btnReset" style="margin-top:0.5rem;">
+          ↺ Reset
+        </button>
+
+      </div>
+
+      <!-- ── PREVIEW ── -->
+      <div class="qsl-preview-panel">
+        <div class="preview-label">Live preview</div>
+        <div class="canvas-wrapper">
+          <canvas id="qslCanvas"></canvas>
+        </div>
+        <p style="font-family:var(--f-mono);font-size:0.62rem;color:var(--c-text-3);letter-spacing:0.1rem;">
+          FORMAT: 148 × 105 MM  ·  RESOLUTION: 1480 × 1050 PX  ·  PNG
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── DOWNLOAD TOAST ── -->
+<div class="dl-toast" id="dlToast">✓ QSL Card downloaded!</div>
