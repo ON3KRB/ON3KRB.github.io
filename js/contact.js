@@ -287,18 +287,26 @@
       ctx.fillText('OP: '+data.opName.toUpperCase(), 52, zy+176);
     }
 
-    /* ── S-METER for RST (right half, x 720–1450) ── */
-    const rst = parseInt(data.rst) || 599;
-    const sVal = Math.min(9, Math.max(1, Math.floor((rst % 100) / 10) || Math.floor(rst / 10)));
+    /* ── S-METER for Signal Strength (right half) ── */
+    const sVal = Math.min(9, Math.max(1, data.sVal||9));
+    const rVal = Math.min(5, Math.max(1, data.rVal||5));
     drawSMeter(1085, zy + 155, 340, sVal);
 
-    /* RST label above meter */
+    /* RS label + values above meter */
     ctx.font='500 20px "Share Tech Mono", monospace';
     ctx.fillStyle=C.dark; ctx.textAlign='center';
-    ctx.fillText("RST RX'D", 1085, zy+64);
-    ctx.font='600 36px "Share Tech Mono", monospace';
-    ctx.fillStyle=C.white; ctx.textAlign='center';
-    ctx.fillText(data.rst||'599', 1085, zy+100);
+    ctx.fillText('REPORT (RS)', 1085, zy+64);
+
+    /* R value pill */
+    ctx.font='600 30px "Share Tech Mono", monospace';
+    ctx.fillStyle=hex2rgba(C.amber,0.8); ctx.textAlign='right';
+    ctx.fillText('R'+rVal, 1040, zy+102);
+    ctx.fillStyle=hex2rgba(C.dark,0.5); ctx.textAlign='center';
+    ctx.fillText('·', 1052, zy+102);
+    /* S value */
+    ctx.font='600 30px "Share Tech Mono", monospace';
+    ctx.fillStyle=hex2rgba(C.green,0.9); ctx.textAlign='left';
+    ctx.fillText('S'+sVal, 1065, zy+102);
 
     /* ── Thin sub-divider ── */
     const dv2y = zy+200;
@@ -512,7 +520,8 @@
       utc:    document.getElementById('inp-utc').value,
       band:   document.getElementById('inp-band').value,
       mode:   document.getElementById('inp-mode').value,
-      rst:    document.getElementById('inp-rst').value.trim()||'599',
+      rVal:   parseInt(document.getElementById('inp-r').value)||5,
+      sVal:   parseInt(document.getElementById('inp-s').value)||9,
     };
   }
 
@@ -520,7 +529,7 @@
   if(di&&!di.value) di.value=new Date().toISOString().slice(0,10);
 
   /* Initial render */
-  drawCard({call:'YOURCALL',opName:'',date:new Date().toISOString().slice(0,10),utc:'14:32',band:'20M',mode:'SSB',rst:'599'});
+  drawCard({call:"YOURCALL",opName:"",date:new Date().toISOString().slice(0,10),utc:"14:32",band:"20M",mode:"SSB",rVal:5,sVal:9});
 
   document.querySelectorAll('.qsl-form-panel input,.qsl-form-panel select')
     .forEach(el=>el.addEventListener('input',()=>drawCard(getFormData())));
@@ -535,7 +544,11 @@
 
   document.getElementById('btnReset').addEventListener('click',()=>{
     document.querySelectorAll('.qsl-form-panel input,.qsl-form-panel select').forEach(el=>{
-      if(el.tagName==='SELECT') el.selectedIndex=0;
+      if(el.tagName==='SELECT') {
+        if(el.id==='inp-r') el.value='5';
+        else if(el.id==='inp-s') el.value='9';
+        else el.selectedIndex=0;
+      }
       else if(el.type==='date') el.value=new Date().toISOString().slice(0,10);
       else el.value='';
     });
