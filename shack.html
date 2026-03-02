@@ -1,14 +1,346 @@
 ---
 layout: default
-title: Shack
+title: ON3KRB — Shack
+extra_css: ["/css/shack.css"]
 ---
-<section style="padding:5rem 0;">
+
+<!-- PAGE HERO -->
+<div class="shack-hero">
   <div class="container">
-    <div class="section-label">Topic</div>
-    <h1 class="section-title">Shack</h1>
-    <p class="section-sub">Vaste opstelling, radios, antennes, tools en upgrades.</p>
-    <div class="card" style="margin-top:2rem;">
-      <p class="prose">Hier komt de inhoud van deze pagina.</p>
+    <div class="section-label">ON3KRB · Shack</div>
+    <h1 class="section-title">Fixed Station.<br>Building block by block.</h1>
+    <p class="section-sub">The home shack — from first QSO to full DX station. All plans laid out, built phase by phase.</p>
+  </div>
+</div>
+
+<!-- ROADMAP STRIP -->
+<section style="padding:2rem 0; border-bottom:1px solid var(--c-border);">
+  <div class="container">
+    <div class="section-label">Build roadmap</div>
+    <div class="roadmap">
+      <div class="roadmap-step active">
+        <div class="roadmap-step__phase">Now · Class C</div>
+        <div class="roadmap-step__title">Phase 0 — POTA Start</div>
+        <div class="roadmap-step__budget">MC-750 + LiFePO4</div>
+      </div>
+      <div class="roadmap-step">
+        <div class="roadmap-step__phase">Phase 1A</div>
+        <div class="roadmap-step__title">HF Shack Core</div>
+        <div class="roadmap-step__budget">IC-7300 MkII + EFHW</div>
+      </div>
+      <div class="roadmap-step">
+        <div class="roadmap-step__phase">Phase 1B</div>
+        <div class="roadmap-step__title">VHF Omni</div>
+        <div class="roadmap-step__budget">Diamond X-50N</div>
+      </div>
+      <div class="roadmap-step">
+        <div class="roadmap-step__phase">Phase 1C</div>
+        <div class="roadmap-step__title">VHF Yagi + Rotor</div>
+        <div class="roadmap-step__budget">A144S5 + G-450A</div>
+      </div>
+      <div class="roadmap-step">
+        <div class="roadmap-step__phase">Phase 2 · Class A</div>
+        <div class="roadmap-step__title">HF Beam DX</div>
+        <div class="roadmap-step__budget">SP7IDX Hexbeam</div>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- SHACK DIAGRAM -->
+<section style="padding:2rem 0 0;">
+  <div class="container">
+    <div class="shack-svg-wrap">
+      <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg" style="font-family:'Share Tech Mono',monospace;">
+        <defs>
+          <filter id="shackglow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <marker id="sarr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="rgba(0,255,136,0.5)"/>
+          </marker>
+        </defs>
+        <text x="450" y="18" fill="rgba(0,255,136,0.18)" font-size="9" text-anchor="middle" letter-spacing="4">SHACK SIGNAL FLOW DIAGRAM</text>
+        <!-- Antenna Tower -->
+        <g transform="translate(65,30)">
+          <line x1="18" y1="0" x2="18" y2="180" stroke="#00ff88" stroke-width="2" filter="url(#shackglow)"/>
+          <line x1="0" y1="22" x2="36" y2="22" stroke="#00ff88" stroke-width="1.5"/>
+          <line x1="4" y1="48" x2="32" y2="48" stroke="#00ff88" stroke-width="1.5"/>
+          <line x1="7" y1="74" x2="29" y2="74" stroke="#00ff88" stroke-width="1.5"/>
+          <ellipse cx="18" cy="8" rx="16" ry="5" fill="none" stroke="rgba(240,165,0,0.6)" stroke-width="1.5"/>
+          <line x1="2" y1="8" x2="34" y2="8" stroke="rgba(240,165,0,0.6)" stroke-width="1.5"/>
+          <text x="18" y="-5" fill="#f0a500" font-size="7" text-anchor="middle" opacity="0.8">HEXBEAM Phase 2</text>
+          <path d="M18,74 Q90,55 175,90" fill="none" stroke="rgba(0,255,136,0.35)" stroke-width="1.5" stroke-dasharray="4,3"/>
+          <text x="90" y="64" fill="rgba(0,255,136,0.35)" font-size="7">EFHW wire</text>
+          <line x1="18" y1="22" x2="18" y2="-8" stroke="#00d4ff" stroke-width="2"/>
+          <text x="18" y="-12" fill="#00d4ff" font-size="7" text-anchor="middle">X-50N</text>
+          <line x1="0" y1="180" x2="36" y2="180" stroke="rgba(0,255,136,0.25)" stroke-width="1"/>
+          <line x1="5" y1="185" x2="31" y2="185" stroke="rgba(0,255,136,0.15)" stroke-width="1"/>
+          <line x1="10" y1="190" x2="26" y2="190" stroke="rgba(0,255,136,0.08)" stroke-width="1"/>
+        </g>
+        <line x1="83" y1="165" x2="295" y2="178" stroke="rgba(0,255,136,0.3)" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#sarr)"/>
+        <text x="183" y="162" fill="rgba(0,255,136,0.4)" font-size="7">Aircell 7 coax</text>
+        <!-- PSU -->
+        <g transform="translate(295,145)">
+          <rect x="0" y="0" width="100" height="58" rx="8" fill="#0d1428" stroke="rgba(240,165,0,0.45)" stroke-width="1.5"/>
+          <text x="50" y="18" fill="#f0a500" font-size="9" text-anchor="middle" font-weight="700">GZV-4000</text>
+          <text x="50" y="30" fill="rgba(240,165,0,0.6)" font-size="7" text-anchor="middle">13.8V · 40A</text>
+          <text x="50" y="42" fill="rgba(240,165,0,0.4)" font-size="7" text-anchor="middle">Linear PSU</text>
+        </g>
+        <line x1="395" y1="173" x2="438" y2="205" stroke="rgba(240,165,0,0.45)" stroke-width="1.5" marker-end="url(#sarr)"/>
+        <!-- IC-7300 -->
+        <g transform="translate(438,185)">
+          <rect x="0" y="0" width="145" height="80" rx="10" fill="#111d35" stroke="rgba(0,255,136,0.55)" stroke-width="1.5"/>
+          <rect x="8" y="8" width="84" height="50" rx="4" fill="#0d1428" stroke="rgba(0,255,136,0.2)" stroke-width="1"/>
+          <text x="50" y="34" fill="#00ff88" font-size="9" text-anchor="middle" font-weight="700" filter="url(#shackglow)">IC-7300 MkII</text>
+          <text x="50" y="46" fill="rgba(0,255,136,0.45)" font-size="6" text-anchor="middle">SDR · 100W · HDMI · LAN</text>
+          <circle cx="115" cy="36" r="14" fill="#0d1428" stroke="rgba(0,255,136,0.4)" stroke-width="1.5"/>
+          <line x1="115" y1="23" x2="115" y2="29" stroke="#00ff88" stroke-width="2"/>
+          <text x="115" y="54" fill="rgba(0,255,136,0.35)" font-size="6" text-anchor="middle">VFO</text>
+          <circle cx="100" cy="68" r="2.5" fill="#00ff88" opacity="0.5" filter="url(#shackglow)"/>
+          <circle cx="108" cy="68" r="2.5" fill="rgba(0,212,255,0.5)" filter="url(#shackglow)"/>
+        </g>
+        <!-- HDMI -->
+        <line x1="583" y1="218" x2="640" y2="218" stroke="rgba(0,212,255,0.4)" stroke-width="1.5" marker-end="url(#sarr)"/>
+        <text x="608" y="212" fill="rgba(0,212,255,0.45)" font-size="6">HDMI</text>
+        <!-- Monitor -->
+        <g transform="translate(640,178)">
+          <rect x="0" y="0" width="105" height="72" rx="6" fill="#0d1428" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
+          <rect x="6" y="6" width="93" height="55" rx="3" fill="#080d18"/>
+          <rect x="6" y="6" width="93" height="20" rx="3" fill="rgba(0,212,255,0.05)"/>
+          <rect x="9" y="9" width="14" height="14" rx="1" fill="rgba(0,255,136,0.25)"/>
+          <rect x="25" y="9" width="9" height="14" rx="1" fill="rgba(0,255,136,0.12)"/>
+          <rect x="36" y="9" width="20" height="14" rx="1" fill="rgba(0,255,136,0.18)"/>
+          <rect x="58" y="9" width="7" height="14" rx="1" fill="rgba(0,212,255,0.38)"/>
+          <text x="52" y="48" fill="rgba(0,212,255,0.5)" font-size="7" text-anchor="middle">EIZO EV2480</text>
+          <text x="52" y="57" fill="rgba(0,212,255,0.28)" font-size="6" text-anchor="middle">Waterfall Display</text>
+        </g>
+        <!-- VHF FT-2980E -->
+        <g transform="translate(438,105)">
+          <rect x="0" y="0" width="105" height="55" rx="8" fill="#0d1428" stroke="rgba(0,212,255,0.38)" stroke-width="1.5"/>
+          <text x="52" y="20" fill="#00d4ff" font-size="9" text-anchor="middle" font-weight="700">FT-2980E</text>
+          <text x="52" y="31" fill="rgba(0,212,255,0.5)" font-size="7" text-anchor="middle">80W · 2m VHF</text>
+          <text x="52" y="42" fill="rgba(0,212,255,0.3)" font-size="6" text-anchor="middle">Shack — always on</text>
+        </g>
+        <!-- Labels -->
+        <text x="83" y="278" fill="rgba(0,255,136,0.4)" font-size="8" text-anchor="middle">Antenna System</text>
+        <text x="345" y="278" fill="rgba(240,165,0,0.4)" font-size="8" text-anchor="middle">Power Supply</text>
+        <text x="510" y="278" fill="rgba(0,255,136,0.4)" font-size="8" text-anchor="middle">HF Transceiver</text>
+        <text x="693" y="278" fill="rgba(0,212,255,0.4)" font-size="8" text-anchor="middle">Waterfall</text>
+        <text x="490" y="175" fill="rgba(0,212,255,0.4)" font-size="8" text-anchor="middle">VHF Shack</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPMENT SECTIONS -->
+<section class="section" style="padding-top:3rem;">
+  <div class="container">
+
+    <div class="phase-divider">
+      <div class="phase-divider__line"></div>
+      <div class="phase-divider__label">Phase 1A · HF Core</div>
+      <div class="phase-divider__line"></div>
+    </div>
+
+    <div class="equip-grid">
+
+      <div class="equip-card future">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="6" width="24" height="16" rx="3" stroke="#00ff88" stroke-width="1.5"/><rect x="4" y="8" width="14" height="10" rx="2" fill="rgba(0,255,136,0.06)" stroke="rgba(0,255,136,0.3)" stroke-width="1"/><circle cx="22" cy="13" r="3.5" stroke="#00ff88" stroke-width="1.5"/><line x1="22" y1="10" x2="22" y2="11.5" stroke="#00ff88" stroke-width="1.5"/></svg>
+          </div>
+          <div class="equip-card__badges"><span class="phase-badge future">Future Plan</span></div>
+        </div>
+        <div class="equip-card__name">HF Transceiver</div>
+        <div class="equip-card__model">ICOM IC-7300 MkII</div>
+        <div class="equip-card__desc">SDR-based HF/6m radio with improved RMDR (+12 dB vs original 7300). HDMI output for waterfall on external monitor. LAN port for remote control. The shack centrepiece.</div>
+        <div style="margin-top:.75rem;">
+          <div class="spec-row"><span class="spec-key">Bands</span><span class="spec-val">160m – 6m</span></div>
+          <div class="spec-row"><span class="spec-key">Power</span><span class="spec-val">100W · Class A: full power</span></div>
+          <div class="spec-row"><span class="spec-key">Features</span><span class="spec-val">HDMI · LAN · USB-C · SDR</span></div>
+        </div>
+        <div class="equip-card__price">± €1.600 · ERS Antwerpen</div>
+      </div>
+
+      <div class="equip-card future">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="7" width="22" height="14" rx="3" stroke="#f0a500" stroke-width="1.5"/><line x1="8" y1="11" x2="8" y2="17" stroke="#f0a500" stroke-width="1.5"/><line x1="12" y1="11" x2="12" y2="17" stroke="#f0a500" stroke-width="1"/><line x1="16" y1="11" x2="16" y2="17" stroke="#f0a500" stroke-width="1"/><line x1="20" y1="11" x2="20" y2="17" stroke="#f0a500" stroke-width="1.5"/></svg>
+          </div>
+          <div class="equip-card__badges"><span class="phase-badge future">Phase 1A</span></div>
+        </div>
+        <div class="equip-card__name">Power Supply</div>
+        <div class="equip-card__model">Diamond GZV-4000 · 40A</div>
+        <div class="equip-card__desc">Linear 40A PSU at 13.8V DC. Powers IC-7300 MkII and FT-2980E VHF shack radio simultaneously. Linear design = low EMC noise — critical with solar inverter nearby.</div>
+        <div style="margin-top:.75rem;">
+          <div class="spec-row"><span class="spec-key">Output</span><span class="spec-val">13.8V / 40A continuous</span></div>
+          <div class="spec-row"><span class="spec-key">Type</span><span class="spec-val">Linear — low RF noise</span></div>
+        </div>
+        <div class="equip-card__price">± €219 · JBE.nl</div>
+      </div>
+
+      <div class="equip-card future">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="8" width="24" height="12" rx="3" stroke="#00d4ff" stroke-width="1.5"/><circle cx="22" cy="14" r="3" stroke="#00d4ff" stroke-width="1.5"/><rect x="4" y="10" width="12" height="8" rx="2" fill="rgba(0,212,255,0.07)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/></svg>
+          </div>
+          <div class="equip-card__badges"><span class="phase-badge future">Phase 1A</span></div>
+        </div>
+        <div class="equip-card__name">VHF Shack Radio</div>
+        <div class="equip-card__model">Yaesu FT-2980E</div>
+        <div class="equip-card__desc">Dedicated 80W 2m FM radio permanently installed in the shack. Never moving in and out of the car — always on. Connected to the Diamond X-50N on the roof.</div>
+        <div style="margin-top:.75rem;">
+          <div class="spec-row"><span class="spec-key">Frequency</span><span class="spec-val">144–148 MHz (2m FM)</span></div>
+          <div class="spec-row"><span class="spec-key">Power</span><span class="spec-val">80W</span></div>
+        </div>
+        <div class="equip-card__price">± €130 · ERS Antwerpen</div>
+      </div>
+
+      <div class="equip-card future">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><line x1="4" y1="20" x2="24" y2="8" stroke="#00ff88" stroke-width="2"/><circle cx="4" cy="20" r="2.5" fill="none" stroke="#00ff88" stroke-width="1.5"/><circle cx="24" cy="8" r="2" fill="rgba(0,255,136,0.3)" stroke="rgba(0,255,136,0.5)" stroke-width="1"/></svg>
+          </div>
+          <div class="equip-card__badges"><span class="phase-badge future">Phase 1A</span></div>
+        </div>
+        <div class="equip-card__name">HF Wire Antenna</div>
+        <div class="equip-card__model">HyEndFed 80/40/20/10m EFHW</div>
+        <div class="equip-card__desc">~16m end-fed halfwave covering 80–10m. Includes 49:1 UnUn toroidal transformer. Permanently fixed to the house. Unlocks 80m — key for local ON nets and NVIS contacts.</div>
+        <div style="margin-top:.75rem;">
+          <div class="spec-row"><span class="spec-key">Bands</span><span class="spec-val">80m · 40m · 20m · 10m</span></div>
+          <div class="spec-row"><span class="spec-key">Balun</span><span class="spec-val">49:1 UnUn T200-43 toroid</span></div>
+          <div class="spec-row"><span class="spec-key">Max power</span><span class="spec-val">200W</span></div>
+        </div>
+        <div class="equip-card__price">± €239 · HyEndFed.com</div>
+      </div>
+
+      <div class="equip-card future">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="5" width="22" height="15" rx="3" stroke="#00d4ff" stroke-width="1.5"/><rect x="11" y="20" width="6" height="3" fill="rgba(0,212,255,0.2)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/><rect x="5" y="7" width="5" height="10" fill="rgba(0,255,136,0.2)"/><rect x="11" y="7" width="3" height="10" fill="rgba(0,255,136,0.1)"/></svg>
+          </div>
+          <div class="equip-card__badges"><span class="phase-badge future">Phase 1A</span></div>
+        </div>
+        <div class="equip-card__name">Waterfall Display</div>
+        <div class="equip-card__model">EIZO EV2480-BK 24"</div>
+        <div class="equip-card__desc">Connected via HDMI to the IC-7300 MkII for a full-width spectrum waterfall display. The visual centrepiece of the shack — see every signal on the band at a glance.</div>
+        <div class="equip-card__price">± €150–365 · Coolblue.be</div>
+      </div>
+
+      <div class="equip-card future">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="6" width="22" height="16" rx="3" stroke="#00ff88" stroke-width="1.5"/><path d="M6,18 Q10,10 14,14 Q18,18 22,8" fill="none" stroke="#00ff88" stroke-width="1.5"/></svg>
+          </div>
+          <div class="equip-card__badges"><span class="phase-badge future">Phase 1A</span></div>
+        </div>
+        <div class="equip-card__name">Antenna Analyser</div>
+        <div class="equip-card__model">RigExpert AA-35 Zoom</div>
+        <div class="equip-card__desc">Measures SWR, impedance and resonance without transmitting. Bluetooth + graphical display. Used in the shack for EFHW tuning — and taken to every POTA activation.</div>
+        <div class="equip-card__price">± €180 · ERS Antwerpen</div>
+      </div>
+
+    </div>
+
+    <!-- VHF Upgrade -->
+    <div class="phase-divider">
+      <div class="phase-divider__line"></div>
+      <div class="phase-divider__label">Phase 1B + 1C · VHF Upgrade</div>
+      <div class="phase-divider__line"></div>
+    </div>
+
+    <div class="equip-grid">
+      <div class="equip-card future">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><line x1="14" y1="4" x2="14" y2="24" stroke="#00d4ff" stroke-width="2"/><line x1="6" y1="12" x2="22" y2="12" stroke="#00d4ff" stroke-width="1.5"/><line x1="8" y1="8" x2="20" y2="8" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/><line x1="4" y1="16" x2="24" y2="16" stroke="rgba(0,212,255,0.5)" stroke-width="1.5"/></svg>
+          </div>
+          <div class="equip-card__badges"><span class="phase-badge future">Phase 1B</span></div>
+        </div>
+        <div class="equip-card__name">VHF/UHF Omni</div>
+        <div class="equip-card__model">Diamond X-50N</div>
+        <div class="equip-card__desc">Collinear rooftop antenna for 2m and 70cm. 3.5 dBi on 2m, 5.5 dBi on 70cm. Covers all Antwerp-area repeaters reliably from the shack with the FT-2980E.</div>
+        <div style="margin-top:.75rem;">
+          <div class="spec-row"><span class="spec-key">Bands</span><span class="spec-val">2m + 70cm</span></div>
+          <div class="spec-row"><span class="spec-key">Gain</span><span class="spec-val">3.5 dBi (2m) / 5.5 dBi (70cm)</span></div>
+        </div>
+        <div class="equip-card__price">± €120 · ERS Antwerpen</div>
+      </div>
+
+      <div class="equip-card future">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><line x1="4" y1="14" x2="24" y2="14" stroke="#00ff88" stroke-width="2"/><line x1="8" y1="10" x2="8" y2="18" stroke="#00ff88" stroke-width="2"/><line x1="16" y1="11" x2="16" y2="17" stroke="#00ff88" stroke-width="1.5"/><line x1="22" y1="12" x2="22" y2="16" stroke="#00ff88" stroke-width="1"/></svg>
+          </div>
+          <div class="equip-card__badges"><span class="phase-badge future">Phase 1C</span></div>
+        </div>
+        <div class="equip-card__name">VHF 5-Element Yagi</div>
+        <div class="equip-card__model">Diamond A144S5</div>
+        <div class="equip-card__desc">8.5 dBi gain, 1.6m boom. Pointed at Waasmunster (60 km, azimuth 220°) via the G-450A rotator. The goal: Waasmunster reliably reachable from the shack.</div>
+        <div style="margin-top:.75rem;">
+          <div class="spec-row"><span class="spec-key">Gain</span><span class="spec-val">8.5 dBi</span></div>
+          <div class="spec-row"><span class="spec-key">Target</span><span class="spec-val">Waasmunster — 60 km</span></div>
+        </div>
+        <div class="equip-card__price">± €190 · ERS Antwerpen</div>
+      </div>
+
+      <div class="equip-card future">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="10" fill="none" stroke="rgba(0,255,136,0.3)" stroke-width="1" stroke-dasharray="2,2"/><circle cx="14" cy="14" r="5" fill="none" stroke="#00ff88" stroke-width="1.5"/><line x1="14" y1="6" x2="14" y2="9" stroke="#00ff88" stroke-width="1.5"/><polygon points="14,4 16,8 12,8" fill="#00ff88"/></svg>
+          </div>
+          <div class="equip-card__badges"><span class="phase-badge future">Phase 1C · reused Phase 2</span></div>
+        </div>
+        <div class="equip-card__name">Azimuth Rotator</div>
+        <div class="equip-card__model">Yaesu G-450A</div>
+        <div class="equip-card__desc">450° azimuth rotor with desk controller. Phase 1C: rotates the VHF Yagi. Phase 2: reused for the HF Hexbeam. Smart investment — saves ~€350 on the total budget.</div>
+        <div class="equip-card__price">± €350 · JBE.nl</div>
+      </div>
+    </div>
+
+    <!-- Phase 2 -->
+    <div class="phase-divider">
+      <div class="phase-divider__line"></div>
+      <div class="phase-divider__label">Phase 2 · Class A — DX Station</div>
+      <div class="phase-divider__line"></div>
+    </div>
+
+    <div class="equip-grid">
+      <div class="equip-card phase2" style="border-left:3px solid var(--c-amber);">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><ellipse cx="14" cy="14" rx="11" ry="5" fill="none" stroke="#f0a500" stroke-width="1.5"/><ellipse cx="14" cy="14" rx="8" ry="3.5" fill="none" stroke="rgba(240,165,0,0.5)" stroke-width="1"/><line x1="14" y1="9" x2="14" y2="4" stroke="#f0a500" stroke-width="2"/><circle cx="14" cy="3" r="1.5" fill="#f0a500"/></svg>
+          </div>
+          <div class="equip-card__badges">
+            <span class="phase-badge phase2">Class A first!</span>
+            <span class="phase-badge phase2">Phase 2 · Year 2</span>
+          </div>
+        </div>
+        <div class="equip-card__name">HF Beam</div>
+        <div class="equip-card__model">SP7IDX Hexbeam</div>
+        <div class="equip-card__desc">6-band directional HF beam on 10/12/15/17/20/40m. ~6 dBi gain and ~20 dB front-to-back ratio. The real power: pointing away from interference. Requires 100W Class A licence to use fully. G-450A rotor reused from Phase 1C.</div>
+        <div style="margin-top:.75rem;">
+          <div class="spec-row"><span class="spec-key">Bands</span><span class="spec-val">10 · 12 · 15 · 17 · 20 · 40m</span></div>
+          <div class="spec-row"><span class="spec-key">Gain</span><span class="spec-val">~6 dBi (1 S-point improvement)</span></div>
+          <div class="spec-row"><span class="spec-key">F/B Ratio</span><span class="spec-val">~20 dB — kills QRM from behind</span></div>
+        </div>
+        <div class="equip-card__price">± €1.500–2.000 · HexBeam.be</div>
+      </div>
+
+      <div class="equip-card future">
+        <div class="equip-card__top">
+          <div class="equip-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="3" y="10" width="22" height="10" rx="3" stroke="#00ff88" stroke-width="1.5"/><line x1="7" y1="15" x2="21" y2="15" stroke="#00ff88" stroke-width="1"/><rect x="5" y="12" width="3" height="6" rx="1" fill="rgba(0,255,136,0.3)"/><circle cx="19" cy="15" r="2" stroke="#00ff88" stroke-width="1"/></svg>
+          </div>
+          <div class="equip-card__badges"><span class="phase-badge future">Phase 1A</span></div>
+        </div>
+        <div class="equip-card__name">Accessories</div>
+        <div class="equip-card__model">Mic · Headset · CW Paddle</div>
+        <div class="equip-card__desc">Icom HM-219 hand mic. Heil Pro Micro IC headset for contesting. Bencher BY-1 CW paddle — the CW bug has bitten, the HAREC handbook is in the house. Icom SP-38 external speaker.</div>
+        <div style="margin-top:.5rem; display:flex; gap:.4rem; flex-wrap:wrap;">
+          <span class="tl-badge">HM-219 mic</span><span class="tl-badge">Heil headset</span><span class="tl-badge">Bencher BY-1</span><span class="tl-badge">SP-38</span>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
