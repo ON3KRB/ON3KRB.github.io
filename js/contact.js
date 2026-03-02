@@ -279,12 +279,12 @@
     fitText(callLabel, 52, zy+148, 580, '800 88px "Orbitron", monospace');
     noGlow();
 
-    /* Operator name directly under callsign */
+    /* Operator name — spaced below callsign */
     if (data.opName) {
       ctx.font='300 28px "DM Sans", sans-serif';
       ctx.fillStyle=hex2rgba(C.grey,0.75);
       ctx.textAlign='left';
-      ctx.fillText('OP: '+data.opName.toUpperCase(), 52, zy+176);
+      ctx.fillText('OP: '+data.opName.toUpperCase(), 52, zy+196);
     }
 
     /* ── S-METER for Signal Strength (right half) ── */
@@ -297,10 +297,15 @@
     ctx.fillStyle=C.dark; ctx.textAlign='center';
     ctx.fillText('REPORT (RS)', 1085, zy+64);
 
-    /* R value pill */
+    /* R value pill — green+bigger when good (4-5), amber when poor (1-3) */
+    const rColor = rVal >= 4 ? C.green : C.amber;
+    const rSize  = rVal >= 4 ? 38 : 30;
+    ctx.font=`700 ${rSize}px "Share Tech Mono", monospace`;
+    if(rVal>=4) glow(C.green, 8);
+    ctx.fillStyle=hex2rgba(rColor, 0.9); ctx.textAlign='right';
+    ctx.fillText('R'+rVal, 1040, zy+104);
+    noGlow();
     ctx.font='600 30px "Share Tech Mono", monospace';
-    ctx.fillStyle=hex2rgba(C.amber,0.8); ctx.textAlign='right';
-    ctx.fillText('R'+rVal, 1040, zy+102);
     ctx.fillStyle=hex2rgba(C.dark,0.5); ctx.textAlign='center';
     ctx.fillText('·', 1052, zy+102);
     /* S value */
@@ -371,11 +376,11 @@
     ctx.beginPath(); ctx.arc(cx,cy,r,sa,ea);
     ctx.strokeStyle=hex2rgba(C.darker,0.9); ctx.lineWidth=18; ctx.stroke();
 
-    /* Colour zones: S1-S6 green, S7-S9 amber, S9+ red */
+    /* Colour zones: S1-S3 red, S4-S6 amber, S7-S9 green */
     const zones = [
-      {from:0, to:5/9,   col:C.green},
-      {from:5/9, to:8/9, col:C.amber},
-      {from:8/9, to:1,   col:C.red},
+      {from:0,   to:2/8, col:C.red},
+      {from:2/8, to:5/8, col:C.amber},
+      {from:5/8, to:1,   col:C.green},
     ];
     zones.forEach(z=>{
       ctx.beginPath();
@@ -384,10 +389,9 @@
       ctx.globalAlpha=1;
     });
 
-    /* Active arc up to sVal */
+    /* Active arc colour: red when low, amber mid, green when strong */
     const activeFrac = (sVal-1)/8;
-    const activeEnd  = sa + span * Math.min(activeFrac, 5/9);
-    const col1 = sVal<=6 ? C.green : (sVal<=8 ? C.amber : C.red);
+    const col1 = sVal<=3 ? C.red : (sVal<=6 ? C.amber : C.green);
     ctx.beginPath(); ctx.arc(cx,cy,r,sa,sa+span*Math.min(activeFrac,1));
     glow(col1,12); ctx.strokeStyle=col1; ctx.lineWidth=10; ctx.stroke(); noGlow();
 
