@@ -69,7 +69,7 @@ body { overflow-x: hidden; }
           <a class="btn btn-primary" href="#">QRZ Profile →</a>
           <a class="btn btn-ghost"href="/shack/">My shack</a>
         </div>
-        <a class="qrz-badge" href="https://www.uba.be/nl">⬡ UBA Lid</a>
+        <a class="qrz-badge" href="https://www.uba.be/nl">⬡ UBA Member</a>
         <a class="qrz-badge" href="https://on6wl.be/">⬡ WLD member</a>
       </div>
     </div>
@@ -82,9 +82,9 @@ body { overflow-x: hidden; }
     <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
       <div>
         <div class="section-label">Latest blog posts</div>
-        <h2 class="section-title" style="margin-bottom:0;">Laatste 3 posts</h2>
+        <h2 class="section-title" style="margin-bottom:0;">Latest 3 posts</h2>
       </div>
-      <a class="btn btn-ghost" href="/blog/">Alle posts →</a>
+      <a class="btn btn-ghost" href="/blog/">All posts →</a>
     </div>
 
     <div class="blog-grid">
@@ -99,7 +99,7 @@ body { overflow-x: hidden; }
           <p class="blog-card__excerpt">{{ post.excerpt | strip_html | truncate: 140 }}</p>
         </div>
         <div class="blog-card__footer">
-          <span class="read-more">Lees meer →</span>
+          <span class="read-more">Read more →</span>
           <span style="font-family:var(--f-mono);font-size:0.6rem;color:var(--c-text-3);">{{ post.content | number_of_words | divided_by: 220 | plus: 1 }} min</span>
         </div>
       </a>
@@ -116,12 +116,12 @@ body { overflow-x: hidden; }
 <section class="section">
   <div class="container">
     <div class="section-label">Topics</div>
-    <h2 class="section-title">Mijn radio amateur verhaal</h2>
-    <p class="section-sub">Korte hub naar de vaste pagina's: shack, mobile en portable.</p>
+    <h2 class="section-title">My radio amateur story</h2>
+    <p class="section-sub">Quick hub to the main pages: shack, mobile and portable.</p>
     <div style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-top:1.5rem;">
-      <a class="btn btn-primary" href="/shack/">Shack</a>
-      <a class="btn btn-ghost" href="/mobile/">Mobile</a>
-      <a class="btn btn-ghost" href="/portable/">Portable</a>
+      <a class="btn btn-primary" href="{ '/shack.html' | relative_url }">Shack</a>
+      <a class="btn btn-ghost" href="{ '/mobile.html' | relative_url }">Mobile</a>
+      <a class="btn btn-ghost" href="{ '/portable.html' | relative_url }">Portable</a>
     </div>
   </div>
 </section>
@@ -130,60 +130,67 @@ body { overflow-x: hidden; }
  <!-- Rijke tijdlijn -->
   <section class="section">
     <div class="container">
-      <div class="section-label a1">Traject</div>
-      <h2 class="section-title a1">Mijn weg naar de ether</h2>
-      <p class="section-sub a2" style="margin-bottom:3rem;">Van eerste interesse tot actief radioamateur — stap voor stap.</p>
+      <div class="section-label a1">Journey</div>
+      <h2 class="section-title a1">My path to the airwaves</h2>
+      <p class="section-sub a2" style="margin-bottom:3rem;">From first sparks of interest to licensed radio amateur — one step at a time.</p>
 
       <div class="two-col">
         <div class="rich-timeline a3">
           <div class="rtl-item">
-            <div class="rtl-year">2026 — Nu</div>
-            <div class="rtl-title">ON3FTB actief op de band</div>
-            <div class="rtl-desc">Eerste QSO's op 20m SSB. Shack opgezet, antenne gehangen. CW-training gestart. Eerste DX-verbindingen. Elke dag leert iets nieuws.</div>
-            <div class="tl-badges"><span class="tl-badge">SSB</span><span class="tl-badge">CW</span><span class="tl-badge">FT8</span><span class="tl-badge">20m</span><span class="tl-badge">40m</span></div>
+            <div class="rtl-year">Now — What's next?</div>
+            <div class="rtl-title">Applying for the licence &amp; gearing up</div>
+            <div class="rtl-desc">Licence application submitted — next up: acquiring equipment to practice and learn. The CW bug has bitten too. The HAREC handbook is already on the desk. That's the next challenge.</div>
+            <div class="tl-badges"><span class="tl-badge">ON3</span><span class="tl-badge">CW</span><span class="tl-badge">HAREC</span><span class="tl-badge">HF</span></div>
           </div>
           <div class="rtl-item">
-            <div class="rtl-year">2026</div>
-            <div class="rtl-title">BIPT licentie behaald</div>
-            <div class="rtl-desc">ON3 licentie via het BIPT examen. Theorie over elektromagnetisme, regelgeving, veiligheid en de techniek achter radio. Een lange voorbereiding die het volledig waard was.</div>
-            <div class="tl-badges"><span class="tl-badge">BIPT</span><span class="tl-badge">ON3</span><span class="tl-badge">Examen</span></div>
+            <div class="rtl-year">March 2026</div>
+            <div class="rtl-title">Theory exam at BIPT</div>
+            <div class="rtl-desc">Sat the theory exam at BIPT — on the way to becoming an ON3 radio amateur. A moment that had been building for years.</div>
+            <div class="tl-badges"><span class="tl-badge">BIPT</span><span class="tl-badge">ON3</span><span class="tl-badge">Exam</span></div>
+          </div>
+          <div class="rtl-item">
+            <div class="rtl-year">January 2026</div>
+            <div class="rtl-title">Course in Sinaai — the fire is lit</div>
+            <div class="rtl-desc">Attended the Class C amateur radio course at the WLD club premises in Sinaai. Excellent training by ON4BB and others. Met fascinating people with a wealth of experience — what a learning experience! Joined section WLD and passed the practical exam.</div>
+            <div class="tl-badges"><span class="tl-badge">WLD</span><span class="tl-badge">ON4BB</span><span class="tl-badge">Class C</span><span class="tl-badge">Practical</span></div>
           </div>
           <div class="rtl-item">
             <div class="rtl-year">2025</div>
-            <div class="rtl-title">Studie & voorbereiding</div>
-            <div class="rtl-desc">Intensieve studie van het bandplan, regelgeving, antenneleer en propagatie. Eerste CW-letters geleerd via LCWO. Eerste contacten met de Belgische radioamateur-gemeenschap via UBA.</div>
-            <div class="tl-badges"><span class="tl-badge">LCWO</span><span class="tl-badge">UBA</span><span class="tl-badge">Theorie</span></div>
+            <div class="rtl-title">New year, new plans — discovering UBA</div>
+            <div class="rtl-desc">Setting new intentions for 2026, I finally made time to dive deeper into radio. Ended up on UBA.be and discovered that section WLD was organising the very first Class C amateur radio course. Signed up without hesitation — even though Sinaai wasn't exactly around the corner.</div>
+            <div class="tl-badges"><span class="tl-badge">UBA</span><span class="tl-badge">WLD</span><span class="tl-badge">Class C</span></div>
           </div>
           <div class="rtl-item dim">
-            <div class="rtl-year">2024</div>
-            <div class="rtl-title">SDR & eerste luisterervaringen</div>
-            <div class="rtl-desc">RTL-SDR dongle gekocht. Het spectrum voor het eerst gezien — al die signalen, al die activiteit. Kortegolf ontdekt, uitzendingen beluisterd, schepen en vliegtuigen gevolgd. Niet meer gestopt.</div>
-            <div class="tl-badges"><span class="tl-badge">SDR</span><span class="tl-badge">Kortegolf</span><span class="tl-badge">ADS-B</span></div>
+            <div class="rtl-year">2019</div>
+            <div class="rtl-title">Where it all began — radio waves &amp; the sea</div>
+            <div class="rtl-desc">A lifelong interest in radio waves, sparked playfully on holiday with PMR446 handhelds. After earning my sailing licence and RYA Dayskipper diploma, I needed a maritime radio operator certificate. Obtained my VHF licence, then my SRC certificate. Though the focus was on procedures and equipment, my first contact with BIPT was made — and the curiosity about radio only grew stronger.</div>
+            <div class="tl-badges"><span class="tl-badge">PMR446</span><span class="tl-badge">VHF</span><span class="tl-badge">SRC</span><span class="tl-badge">RYA</span><span class="tl-badge">BIPT</span></div>
           </div>
         </div>
 
         <div class="a4">
-          <div class="section-label" style="margin-bottom:1.25rem;">Kennis & vaardigheden</div>
+          <div class="section-label" style="margin-bottom:0.5rem;">Knowledge &amp; skills</div>
+          <p style="color:var(--c-text-3);font-size:0.8rem;font-family:var(--f-mono);margin-bottom:1.25rem;line-height:1.5;">Areas I'm actively exploring and deepening — always a work in progress.</p>
           <div style="display:flex;flex-direction:column;gap:1rem;">
             <div class="exp-card">
-              <div class="exp-label">Propagatie</div>
-              <div class="exp-title">Hoe radiogolven reizen</div>
-              <div class="exp-text">Ionosfeer, MUF, greyline DX, sporadic-E en hoe de tijd van het jaar de band bepaalt. Elke dag anders.</div>
+              <div class="exp-label">Propagation</div>
+              <div class="exp-title">How radio waves travel</div>
+              <div class="exp-text">Ionosphere, MUF, greyline DX, sporadic-E and how the time of year shapes the bands. Something new every day.</div>
             </div>
             <div class="exp-card">
-              <div class="exp-label">Antennes</div>
-              <div class="exp-title">Van dipool tot EFHW</div>
-              <div class="exp-text">Resonantie, impedantie, SWR. Zelf draden knippen, tunen en meten. De antenne is de helft van de verbinding.</div>
+              <div class="exp-label">Antennas</div>
+              <div class="exp-title">From dipole to EFHW</div>
+              <div class="exp-text">Resonance, impedance, SWR. Cutting wire, tuning and measuring. The antenna is half the contact.</div>
             </div>
             <div class="exp-card">
-              <div class="exp-label">Digitale modi</div>
-              <div class="exp-title">FT8 & zwak-signaal</div>
-              <div class="exp-text">WSJT-X, de magie van FT8. DX maken op 5 watt dat je met SSB nooit zou bereiken. Fascinerende technologie.</div>
+              <div class="exp-label">Digital modes</div>
+              <div class="exp-title">FT8 &amp; weak signal</div>
+              <div class="exp-text">WSJT-X and the magic of FT8. Making DX on 5 watts that SSB could never reach. Fascinating technology to unpack.</div>
             </div>
             <div class="exp-card">
               <div class="exp-label">CW</div>
-              <div class="exp-title">Morse in de vingers</div>
-              <div class="exp-text">Koch-methode via LCWO. Dagelijks oefenen. Doel: 25 wpm voor contest gebruik. Momenteel ~12 wpm ontvangen.</div>
+              <div class="exp-title">Morse under the fingers</div>
+              <div class="exp-text">Koch method via LCWO. Daily practice. The HAREC handbook is in the house — CW is the next big step to master.</div>
             </div>
           </div>
         </div>
