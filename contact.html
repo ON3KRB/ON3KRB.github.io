@@ -56,10 +56,10 @@ extra_js:
       </a>
 
       <a class="contact-tile" href="https://www.uba.be/" target="_blank" rel="noopener">
-        <div class="tile-icon">UBA</div>
+        <div class="tile-icon">🇧🇪</div>
         <div class="tile-label">UBA</div>
         <div class="tile-value">Member</div>
-        <div class="tile-sub">Royal Belgian Amateur Radio Union</div>
+        <div class="tile-sub">Union Belge des Amateurs</div>
       </a>
 
       <a class="contact-tile" href="https://lotw.arrl.org/" target="_blank" rel="noopener">
@@ -176,10 +176,30 @@ extra_js:
           </div>
         </div>
 
-        <div class="form-row full">
+        <div class="form-row">
           <div class="fld">
-            <label for="inp-rst">RST received</label>
-            <input id="inp-rst" type="text" placeholder="599" maxlength="5" autocomplete="off">
+            <label for="inp-r">Readability (R) 1–5</label>
+            <select id="inp-r">
+              <option value="1">1 — Unreadable</option>
+              <option value="2">2 — Barely readable</option>
+              <option value="3">3 — Readable</option>
+              <option value="4">4 — Good</option>
+              <option value="5" selected>5 — Perfect</option>
+            </select>
+          </div>
+          <div class="fld">
+            <label for="inp-s">Strength (S) 1–9</label>
+            <select id="inp-s">
+              <option value="1">S1 — Faint</option>
+              <option value="2">S2</option>
+              <option value="3">S3 — Weak</option>
+              <option value="4">S4</option>
+              <option value="5">S5 — Fair</option>
+              <option value="6">S6</option>
+              <option value="7">S7 — Good</option>
+              <option value="8">S8</option>
+              <option value="9" selected>S9 — Excellent</option>
+            </select>
           </div>
         </div>
 
