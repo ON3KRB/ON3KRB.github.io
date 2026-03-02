@@ -1,14 +1,257 @@
 ---
 layout: default
-title: Mobile
+title: ON3KRB — Mobile
+extra_css: ["/css/mobile.css"]
 ---
-<section style="padding:5rem 0;">
+
+<!-- PAGE HERO -->
+<div class="mobile-hero">
   <div class="container">
-    <div class="section-label">Topic</div>
-    <h1 class="section-title">Mobile</h1>
-    <p class="section-sub">Radio in de wagen: install, antennes en praktijk.</p>
-    <div class="card" style="margin-top:2rem;">
-      <p class="prose">Hier komt de inhoud van deze pagina.</p>
+    <div class="section-label">ON3KRB · Mobile</div>
+    <h1 class="section-title">Radio in the car.<br>Always connected.</h1>
+    <p class="section-sub">A permanent mobile station in the company car — VHF/UHF, APRS, and HF on the road. Planned step by step.</p>
+  </div>
+</div>
+
+<!-- CAR DIAGRAM -->
+<section style="padding:2rem 0 0;">
+  <div class="container">
+    <div class="car-diagram">
+      <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="font-family:'Share Tech Mono',monospace;">
+        <defs>
+          <filter id="mobileglow"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <!-- Car body -->
+        <path d="M80,130 Q90,80 140,70 L260,65 Q310,55 360,65 L540,68 Q570,68 600,110 L610,130 Z"
+              fill="#0d1428" stroke="rgba(0,255,136,0.35)" stroke-width="2"/>
+        <!-- Roof -->
+        <path d="M200,70 Q280,35 400,38 Q470,40 520,68"
+              fill="none" stroke="rgba(0,255,136,0.25)" stroke-width="1.5"/>
+        <!-- Wheels -->
+        <circle cx="160" cy="140" r="28" fill="#080d18" stroke="rgba(0,255,136,0.3)" stroke-width="2"/>
+        <circle cx="160" cy="140" r="14" fill="none" stroke="rgba(0,255,136,0.2)" stroke-width="1.5"/>
+        <circle cx="480" cy="140" r="28" fill="#080d18" stroke="rgba(0,255,136,0.3)" stroke-width="2"/>
+        <circle cx="480" cy="140" r="14" fill="none" stroke="rgba(0,255,136,0.2)" stroke-width="1.5"/>
+        <!-- Windshield -->
+        <path d="M245,68 Q280,42 360,40 Q400,40 430,68" fill="rgba(0,212,255,0.04)" stroke="rgba(0,212,255,0.2)" stroke-width="1"/>
+        <!-- Mag mount antenna on roof -->
+        <line x1="380" y1="38" x2="380" y2="-5" stroke="#00ff88" stroke-width="2.5" filter="url(#mobileglow)"/>
+        <ellipse cx="380" cy="40" rx="16" ry="5" fill="rgba(0,255,136,0.1)" stroke="rgba(0,255,136,0.4)" stroke-width="1.5"/>
+        <text x="380" y="-10" fill="#00ff88" font-size="9" text-anchor="middle">Omega 27 MAG</text>
+        <!-- VHF antenna -->
+        <line x1="320" y1="38" x2="320" y2="-8" stroke="#00d4ff" stroke-width="2" filter="url(#mobileglow)"/>
+        <ellipse cx="320" cy="39" rx="10" ry="3.5" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.35)" stroke-width="1.5"/>
+        <text x="320" y="-13" fill="#00d4ff" font-size="8" text-anchor="middle">CA-2X4SR</text>
+        <!-- Radio in dashboard area -->
+        <rect x="270" y="90" width="100" height="40" rx="5" fill="#111d35" stroke="rgba(0,255,136,0.4)" stroke-width="1.5"/>
+        <rect x="275" y="94" width="60" height="28" rx="3" fill="#0d1428" stroke="rgba(0,255,136,0.2)" stroke-width="1"/>
+        <text x="305" y="110" fill="#00ff88" font-size="7" text-anchor="middle" filter="url(#mobileglow)">FTM-500DE</text>
+        <text x="305" y="120" fill="rgba(0,255,136,0.4)" font-size="6" text-anchor="middle">50W APRS C4FM</text>
+        <circle cx="350" cy="108" r="8" fill="#0d1428" stroke="rgba(0,255,136,0.35)" stroke-width="1"/>
+        <!-- LiFePO4 battery -->
+        <rect x="160" y="145" width="55" height="30" rx="4" fill="#0d1428" stroke="rgba(0,212,255,0.3)" stroke-width="1.5"/>
+        <text x="187" y="159" fill="#00d4ff" font-size="7" text-anchor="middle">LiFePO4</text>
+        <text x="187" y="169" fill="rgba(0,212,255,0.4)" font-size="6" text-anchor="middle">20Ah</text>
+        <!-- Power line -->
+        <line x1="215" y1="158" x2="270" y2="110" stroke="rgba(240,165,0,0.3)" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <!-- Labels -->
+        <text x="350" y="195" fill="rgba(0,255,136,0.35)" font-size="9" text-anchor="middle">Mobile Station — Permanent install · No hardwiring to car battery</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- LEGEND -->
+<section style="padding:1.5rem 0 0;">
+  <div class="container">
+    <div style="display:flex; gap:1.5rem; flex-wrap:wrap; align-items:center;">
+      <span class="status-pill owned">Already owned</span>
+      <span class="status-pill future">Future plan</span>
+      <span class="status-pill later">Later — Year 2</span>
+      <span style="font-size:.78rem; color:var(--c-text-3);">· Company car: no permanent wiring — LiFePO4 battery as power source</span>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN RADIO -->
+<section class="section" style="padding-top:2.5rem;">
+  <div class="container">
+    <div class="section-label">VHF/UHF Mobile</div>
+    <h2 class="section-title" style="font-size:1.6rem; margin-bottom:1.5rem;">Main Radio — Permanent in the car</h2>
+
+    <div class="mobile-layout">
+      <div class="gear-card future">
+        <div class="gear-card__header">
+          <div class="gear-card__icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="7" width="24" height="14" rx="3" stroke="#00ff88" stroke-width="1.5"/><rect x="4" y="9" width="14" height="9" rx="2" fill="rgba(0,255,136,0.06)" stroke="rgba(0,255,136,0.25)" stroke-width="1"/><circle cx="22" cy="13.5" r="3.5" stroke="#00ff88" stroke-width="1.5"/></svg>
+          </div>
+          <div>
+            <div class="gear-card__title">VHF/UHF Mobile Radio</div>
+            <div class="gear-card__model">Yaesu FTM-500DE</div>
+          </div>
+        </div>
+        <div style="margin-bottom:.5rem;"><span class="status-pill future">Future plan</span></div>
+        <div class="gear-card__desc">Dual-band (2m + 70cm), 50W, APRS built-in, C4FM digital mode, colour display. Permanently mounted in the car — not moved around, always ready. Powered by a LiFePO4 battery, not the car electrical system. Safe for a leased company car.</div>
+        <div style="margin-top:.75rem;">
+          <div class="spec-row"><span class="spec-key">Bands</span><span class="spec-val">2m + 70cm</span></div>
+          <div class="spec-row"><span class="spec-key">Power</span><span class="spec-val">50W</span></div>
+          <div class="spec-row"><span class="spec-key">Extra</span><span class="spec-val">APRS · C4FM · colour display</span></div>
+          <div class="spec-row"><span class="spec-key">Power source</span><span class="spec-val">LiFePO4 20Ah — safe in lease car</span></div>
+        </div>
+        <div style="margin-top:.75rem; font-family:var(--f-mono); font-size:.72rem; color:var(--c-amber);">± €430 · JBE.nl</div>
+      </div>
+
+      <div>
+        <div class="gear-card owned" style="margin-bottom:1rem;">
+          <div class="gear-card__header">
+            <div class="gear-card__icon">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><line x1="13" y1="2" x2="13" y2="24" stroke="#00d4ff" stroke-width="2"/><line x1="4" y1="10" x2="22" y2="10" stroke="#00d4ff" stroke-width="1.5"/><line x1="6" y1="7" x2="20" y2="7" stroke="rgba(0,212,255,0.5)" stroke-width="1"/><line x1="2" y1="14" x2="24" y2="14" stroke="rgba(0,212,255,0.5)" stroke-width="1"/></svg>
+            </div>
+            <div>
+              <div class="gear-card__title">Primary Mobile Antenna</div>
+              <div class="gear-card__model">Comet CA-2X4SR</div>
+            </div>
+          </div>
+          <div style="margin-bottom:.5rem;"><span class="status-pill owned">Already owned</span></div>
+          <div class="gear-card__desc">2m/70cm dual-band, 150W rated. The main rooftop antenna via the Komunica magnet mount. Solid performer — already in the bag.</div>
+        </div>
+
+        <div class="gear-card owned" style="margin-bottom:1rem;">
+          <div class="gear-card__header">
+            <div class="gear-card__icon">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><line x1="13" y1="3" x2="13" y2="23" stroke="#00d4ff" stroke-width="2"/><line x1="6" y1="9" x2="20" y2="9" stroke="#00d4ff" stroke-width="1.5"/><line x1="8" y1="13" x2="18" y2="13" stroke="rgba(0,212,255,0.5)" stroke-width="1"/></svg>
+            </div>
+            <div>
+              <div class="gear-card__title">Backup Antenna</div>
+              <div class="gear-card__model">Comet SBB-2</div>
+            </div>
+          </div>
+          <div style="margin-bottom:.5rem;"><span class="status-pill owned">Already owned</span></div>
+          <div class="gear-card__desc">Compact 2m/70cm, 60W. Backup antenna when CA-2X4SR is not mounted. Also ideal for discreet operation.</div>
+        </div>
+
+        <div class="gear-card owned">
+          <div class="gear-card__header">
+            <div class="gear-card__icon">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="16" r="7" fill="none" stroke="#00d4ff" stroke-width="1.5"/><line x1="13" y1="9" x2="13" y2="4" stroke="#00d4ff" stroke-width="2"/><circle cx="13" cy="16" r="3" fill="rgba(0,212,255,0.2)"/></svg>
+            </div>
+            <div>
+              <div class="gear-card__title">Magnet Mount</div>
+              <div class="gear-card__model">Komunica BM-1 PL</div>
+            </div>
+          </div>
+          <div style="margin-bottom:.5rem;"><span class="status-pill owned">Already owned</span></div>
+          <div class="gear-card__desc">Magnetic base (SO-239) with 5m RG-58 cable. Rooftop mounting for CA-2X4SR or SBB-2. No drilling — safe for a leased car.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Install note -->
+    <div class="install-note">
+      <strong>⚠ Leased company car rule:</strong> No permanent wiring to the car battery. The FTM-500DE is powered by a separate <strong>LiFePO4 20Ah battery</strong> in the boot — charged at home the night before. The radio is mounted via a RAM Mount suction cup system — removable in seconds, no traces.
+    </div>
+  </div>
+</section>
+
+<!-- HF MOBILE (deferred) -->
+<section class="section" style="border-top:1px solid var(--c-border);">
+  <div class="container">
+    <div class="section-label">HF Mobile — Year 2</div>
+    <h2 class="section-title" style="font-size:1.5rem; margin-bottom:1.5rem;">HF on the road — future plan</h2>
+
+    <div class="mobile-layout">
+      <div class="gear-card" style="border-left:3px solid var(--c-amber);">
+        <div class="gear-card__header">
+          <div class="gear-card__icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><line x1="13" y1="3" x2="13" y2="23" stroke="#f0a500" stroke-width="2.5"/><ellipse cx="13" cy="15" rx="7" ry="3" fill="none" stroke="rgba(240,165,0,0.4)" stroke-width="1.5"/><line x1="6" y1="15" x2="20" y2="15" stroke="rgba(240,165,0,0.5)" stroke-width="1"/></svg>
+          </div>
+          <div>
+            <div class="gear-card__title">HF Mobile Antenna</div>
+            <div class="gear-card__model">Yaesu ATAS-120A</div>
+          </div>
+        </div>
+        <div style="margin-bottom:.5rem;"><span class="status-pill later">Year 2 · After Class A</span></div>
+        <div class="gear-card__desc">Automatic HF/VHF tunable screwdriver antenna for mobile use. Works with Yaesu radios for auto-tuning across HF bands while driving. Deferred: only relevant after Class A licence and with a dedicated HF mobile radio.</div>
+        <div style="margin-top:.5rem; font-family:var(--f-mono); font-size:.72rem; color:var(--c-amber);">Not a priority now — Class A first</div>
+      </div>
+
+      <div style="background:rgba(0,255,136,0.03); border:1px solid var(--c-border); border-radius:14px; padding:1.25rem;">
+        <div class="section-label" style="margin-bottom:.75rem;">Mobile Antenna comparison</div>
+        <div class="ant-compare">
+          <div class="ant-item primary">
+            <div class="ant-name">CA-2X4SR</div>
+            <div class="ant-spec">2m / 70cm · 150W</div>
+            <div style="font-size:.7rem; color:var(--c-primary); margin-top:.35rem;">✓ Already owned</div>
+          </div>
+          <div class="ant-item">
+            <div class="ant-name">SBB-2</div>
+            <div class="ant-spec">2m / 70cm · 60W</div>
+            <div style="font-size:.7rem; color:var(--c-primary); margin-top:.35rem;">✓ Already owned</div>
+          </div>
+          <div class="ant-item" style="opacity:.6;">
+            <div class="ant-name">ATAS-120A</div>
+            <div class="ant-spec">HF + VHF · Auto</div>
+            <div style="font-size:.7rem; color:var(--c-amber); margin-top:.35rem;">Year 2</div>
+          </div>
+          <div class="ant-item">
+            <div class="ant-name">Komunica BM-1</div>
+            <div class="ant-spec">Mag mount · SO-239</div>
+            <div style="font-size:.7rem; color:var(--c-primary); margin-top:.35rem;">✓ Already owned</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HANDHELD -->
+<section class="section" style="border-top:1px solid var(--c-border);">
+  <div class="container">
+    <div class="section-label">Handheld</div>
+    <h2 class="section-title" style="font-size:1.5rem; margin-bottom:1.5rem;">Always in the pocket</h2>
+    <div class="mobile-layout">
+      <div class="gear-card owned">
+        <div class="gear-card__header">
+          <div class="gear-card__icon">
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="9" y="2" width="8" height="22" rx="3" stroke="#00d4ff" stroke-width="1.5"/><line x1="13" y1="2" x2="13" y2="-3" stroke="#00d4ff" stroke-width="2"/><rect x="11" y="5" width="4" height="6" rx="1" fill="rgba(0,212,255,0.1)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/></svg>
+          </div>
+          <div>
+            <div class="gear-card__title">Dual Band Handheld</div>
+            <div class="gear-card__model">Yaesu FT-65</div>
+          </div>
+        </div>
+        <div style="margin-bottom:.5rem;"><span class="status-pill owned">Already owned</span></div>
+        <div class="gear-card__desc">2m + 70cm portable. Backup for the mobile, primary radio for POTA walks and handheld use. Also used for the 11m CB operation (as a reference scanner — see Portable page).</div>
+        <div style="margin-top:.5rem; display:flex; gap:.4rem; flex-wrap:wrap;">
+          <span class="tl-badge">FT-65</span>
+          <span class="tl-badge">Diamond SRJ-701A</span>
+          <span class="tl-badge">Diamond SRJ-77</span>
+          <span class="tl-badge">Auto pigtail</span>
+        </div>
+      </div>
+      <div style="background:var(--c-surface); border:1px solid var(--c-border); border-radius:14px; padding:1.25rem;">
+        <div class="section-label" style="margin-bottom:.75rem;">Still to acquire</div>
+        <div class="gear-card future" style="border:none; padding:.75rem 0; border-bottom:1px solid var(--c-border); border-radius:0;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <div class="gear-card__title" style="font-size:.82rem;">Speaker mic</div>
+              <div class="gear-card__model">Yaesu SSM-17B</div>
+            </div>
+            <span class="status-pill future">Future</span>
+          </div>
+          <div class="gear-card__desc">Shoulder speaker-mic for hands-free use with the FT-65. ± €45 · JBE.nl</div>
+        </div>
+        <div class="gear-card future" style="border:none; padding:.75rem 0; border-radius:0;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+            <div>
+              <div class="gear-card__title" style="font-size:.82rem;">Extra battery</div>
+              <div class="gear-card__model">Yaesu SBR-26Li</div>
+            </div>
+            <span class="status-pill future">Future</span>
+          </div>
+          <div class="gear-card__desc">Li-ion extended battery for longer POTA sessions. ± €35 · JBE.nl</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
