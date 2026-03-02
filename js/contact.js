@@ -266,11 +266,11 @@
     ctx.textAlign = 'left';
     ctx.fillText('Kristof  ·  Hoboken, Antwerpen  ·  Belgium', x, 280);
 
-    /* Grid locator */
+    /* Grid locator only */
     ctx.font = '600 30px "Share Tech Mono", monospace';
     glow(C.cyan, 8);
     ctx.fillStyle = C.cyan;
-    ctx.fillText('JO21GF  ·  EU  ·  ITU 14  ·  CQ 14', x, 324);
+    ctx.fillText('JO21GF', x, 324);
     noGlow();
 
     /* Belgian flag */
