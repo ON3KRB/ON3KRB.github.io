@@ -60,7 +60,6 @@ extra_css:
           </marker>
         </defs>
         <text x="450" y="18" fill="rgba(0,255,136,0.18)" font-size="9" text-anchor="middle" letter-spacing="4">SHACK SIGNAL FLOW DIAGRAM</text>
-        <!-- Antenna Tower -->
         <g transform="translate(65,30)">
           <line x1="18" y1="0" x2="18" y2="180" stroke="#00ff88" stroke-width="2" filter="url(#shackglow)"/>
           <line x1="0" y1="22" x2="36" y2="22" stroke="#00ff88" stroke-width="1.5"/>
@@ -79,7 +78,6 @@ extra_css:
         </g>
         <line x1="83" y1="165" x2="295" y2="178" stroke="rgba(0,255,136,0.3)" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#sarr)"/>
         <text x="183" y="162" fill="rgba(0,255,136,0.4)" font-size="7">Aircell 7 coax</text>
-        <!-- PSU -->
         <g transform="translate(295,145)">
           <rect x="0" y="0" width="100" height="58" rx="8" fill="#0d1428" stroke="rgba(240,165,0,0.45)" stroke-width="1.5"/>
           <text x="50" y="18" fill="#f0a500" font-size="9" text-anchor="middle" font-weight="700">GZV-4000</text>
@@ -87,7 +85,6 @@ extra_css:
           <text x="50" y="42" fill="rgba(240,165,0,0.4)" font-size="7" text-anchor="middle">Linear PSU</text>
         </g>
         <line x1="395" y1="173" x2="438" y2="205" stroke="rgba(240,165,0,0.45)" stroke-width="1.5" marker-end="url(#sarr)"/>
-        <!-- IC-7300 -->
         <g transform="translate(438,185)">
           <rect x="0" y="0" width="145" height="80" rx="10" fill="#111d35" stroke="rgba(0,255,136,0.55)" stroke-width="1.5"/>
           <rect x="8" y="8" width="84" height="50" rx="4" fill="#0d1428" stroke="rgba(0,255,136,0.2)" stroke-width="1"/>
@@ -99,10 +96,8 @@ extra_css:
           <circle cx="100" cy="68" r="2.5" fill="#00ff88" opacity="0.5" filter="url(#shackglow)"/>
           <circle cx="108" cy="68" r="2.5" fill="rgba(0,212,255,0.5)" filter="url(#shackglow)"/>
         </g>
-        <!-- HDMI -->
         <line x1="583" y1="218" x2="640" y2="218" stroke="rgba(0,212,255,0.4)" stroke-width="1.5" marker-end="url(#sarr)"/>
         <text x="608" y="212" fill="rgba(0,212,255,0.45)" font-size="6">HDMI</text>
-        <!-- Monitor -->
         <g transform="translate(640,178)">
           <rect x="0" y="0" width="105" height="72" rx="6" fill="#0d1428" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
           <rect x="6" y="6" width="93" height="55" rx="3" fill="#080d18"/>
@@ -114,14 +109,12 @@ extra_css:
           <text x="52" y="48" fill="rgba(0,212,255,0.5)" font-size="7" text-anchor="middle">EIZO EV2480</text>
           <text x="52" y="57" fill="rgba(0,212,255,0.28)" font-size="6" text-anchor="middle">Waterfall Display</text>
         </g>
-        <!-- VHF FT-2980E -->
         <g transform="translate(438,105)">
           <rect x="0" y="0" width="105" height="55" rx="8" fill="#0d1428" stroke="rgba(0,212,255,0.38)" stroke-width="1.5"/>
           <text x="52" y="20" fill="#00d4ff" font-size="9" text-anchor="middle" font-weight="700">FT-2980E</text>
           <text x="52" y="31" fill="rgba(0,212,255,0.5)" font-size="7" text-anchor="middle">80W · 2m VHF</text>
           <text x="52" y="42" fill="rgba(0,212,255,0.3)" font-size="6" text-anchor="middle">Shack — always on</text>
         </g>
-        <!-- Labels -->
         <text x="83" y="278" fill="rgba(0,255,136,0.4)" font-size="8" text-anchor="middle">Antenna System</text>
         <text x="345" y="278" fill="rgba(240,165,0,0.4)" font-size="8" text-anchor="middle">Power Supply</text>
         <text x="510" y="278" fill="rgba(0,255,136,0.4)" font-size="8" text-anchor="middle">HF Transceiver</text>
@@ -144,12 +137,13 @@ extra_css:
 
     <div class="equip-grid">
 
+      <!-- IC-7300 MkII -->
       <div class="equip-card future">
         <div class="equip-card__top">
-          <div class="equip-card__icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="6" width="24" height="16" rx="3" stroke="#00ff88" stroke-width="1.5"/><rect x="4" y="8" width="14" height="10" rx="2" fill="rgba(0,255,136,0.06)" stroke="rgba(0,255,136,0.3)" stroke-width="1"/><circle cx="22" cy="13" r="3.5" stroke="#00ff88" stroke-width="1.5"/><line x1="22" y1="10" x2="22" y2="11.5" stroke="#00ff88" stroke-width="1.5"/></svg>
-          </div>
           <div class="equip-card__badges"><span class="phase-badge future">Future Plan</span></div>
+        </div>
+        <div style="margin:0.75rem 0 1rem; border-radius:8px; overflow:hidden; background:rgba(0,0,0,0.25); padding:0.5rem;">
+          <img src="/assets/images/ic7300mkii.svg" alt="ICOM IC-7300 MkII" style="width:100%; height:auto; display:block; border-radius:4px;">
         </div>
         <div class="equip-card__name">HF Transceiver</div>
         <div class="equip-card__model">ICOM IC-7300 MkII</div>
@@ -159,9 +153,9 @@ extra_css:
           <div class="spec-row"><span class="spec-key">Power</span><span class="spec-val">100W · Class A: full power</span></div>
           <div class="spec-row"><span class="spec-key">Features</span><span class="spec-val">HDMI · LAN · USB-C · SDR</span></div>
         </div>
-        <div class="equip-card__price">± €1.600 · ERS Antwerpen</div>
       </div>
 
+      <!-- GZV-4000 PSU -->
       <div class="equip-card future">
         <div class="equip-card__top">
           <div class="equip-card__icon">
@@ -176,15 +170,15 @@ extra_css:
           <div class="spec-row"><span class="spec-key">Output</span><span class="spec-val">13.8V / 40A continuous</span></div>
           <div class="spec-row"><span class="spec-key">Type</span><span class="spec-val">Linear — low RF noise</span></div>
         </div>
-        <div class="equip-card__price">± €219 · JBE.nl</div>
       </div>
 
+      <!-- FT-2980E -->
       <div class="equip-card future">
         <div class="equip-card__top">
-          <div class="equip-card__icon">
-            <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="2" y="8" width="24" height="12" rx="3" stroke="#00d4ff" stroke-width="1.5"/><circle cx="22" cy="14" r="3" stroke="#00d4ff" stroke-width="1.5"/><rect x="4" y="10" width="12" height="8" rx="2" fill="rgba(0,212,255,0.07)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/></svg>
-          </div>
-          <div class="equip-card__badges"><span class="phase-badge future">Phase 1A</span></div>
+          <div class="equip-card__badges"><span class="phase-badge future">Future Plan</span></div>
+        </div>
+        <div style="margin:0.75rem 0 1rem; border-radius:8px; overflow:hidden; background:rgba(0,0,0,0.25); padding:0.5rem;">
+          <img src="/assets/images/ft2980e.svg" alt="Yaesu FT-2980E" style="width:100%; height:auto; display:block; border-radius:4px;">
         </div>
         <div class="equip-card__name">VHF Shack Radio</div>
         <div class="equip-card__model">Yaesu FT-2980E</div>
@@ -193,9 +187,9 @@ extra_css:
           <div class="spec-row"><span class="spec-key">Frequency</span><span class="spec-val">144–148 MHz (2m FM)</span></div>
           <div class="spec-row"><span class="spec-key">Power</span><span class="spec-val">80W</span></div>
         </div>
-        <div class="equip-card__price">± €130 · ERS Antwerpen</div>
       </div>
 
+      <!-- EFHW Antenna -->
       <div class="equip-card future">
         <div class="equip-card__top">
           <div class="equip-card__icon">
@@ -211,9 +205,9 @@ extra_css:
           <div class="spec-row"><span class="spec-key">Balun</span><span class="spec-val">49:1 UnUn T200-43 toroid</span></div>
           <div class="spec-row"><span class="spec-key">Max power</span><span class="spec-val">200W</span></div>
         </div>
-        <div class="equip-card__price">± €239 · HyEndFed.com</div>
       </div>
 
+      <!-- Monitor -->
       <div class="equip-card future">
         <div class="equip-card__top">
           <div class="equip-card__icon">
@@ -224,9 +218,9 @@ extra_css:
         <div class="equip-card__name">Waterfall Display</div>
         <div class="equip-card__model">EIZO EV2480-BK 24"</div>
         <div class="equip-card__desc">Connected via HDMI to the IC-7300 MkII for a full-width spectrum waterfall display. The visual centrepiece of the shack — see every signal on the band at a glance.</div>
-        <div class="equip-card__price">± €150–365 · Coolblue.be</div>
       </div>
 
+      <!-- RigExpert -->
       <div class="equip-card future">
         <div class="equip-card__top">
           <div class="equip-card__icon">
@@ -237,7 +231,6 @@ extra_css:
         <div class="equip-card__name">Antenna Analyser</div>
         <div class="equip-card__model">RigExpert AA-35 Zoom</div>
         <div class="equip-card__desc">Measures SWR, impedance and resonance without transmitting. Bluetooth + graphical display. Used in the shack for EFHW tuning — and taken to every POTA activation.</div>
-        <div class="equip-card__price">± €180 · ERS Antwerpen</div>
       </div>
 
     </div>
@@ -264,7 +257,6 @@ extra_css:
           <div class="spec-row"><span class="spec-key">Bands</span><span class="spec-val">2m + 70cm</span></div>
           <div class="spec-row"><span class="spec-key">Gain</span><span class="spec-val">3.5 dBi (2m) / 5.5 dBi (70cm)</span></div>
         </div>
-        <div class="equip-card__price">± €120 · ERS Antwerpen</div>
       </div>
 
       <div class="equip-card future">
@@ -281,7 +273,6 @@ extra_css:
           <div class="spec-row"><span class="spec-key">Gain</span><span class="spec-val">8.5 dBi</span></div>
           <div class="spec-row"><span class="spec-key">Target</span><span class="spec-val">Waasmunster — 60 km</span></div>
         </div>
-        <div class="equip-card__price">± €190 · ERS Antwerpen</div>
       </div>
 
       <div class="equip-card future">
@@ -294,7 +285,6 @@ extra_css:
         <div class="equip-card__name">Azimuth Rotator</div>
         <div class="equip-card__model">Yaesu G-450A</div>
         <div class="equip-card__desc">450° azimuth rotor with desk controller. Phase 1C: rotates the VHF Yagi. Phase 2: reused for the HF Hexbeam. Smart investment — saves ~€350 on the total budget.</div>
-        <div class="equip-card__price">± €350 · JBE.nl</div>
       </div>
     </div>
 
@@ -318,13 +308,12 @@ extra_css:
         </div>
         <div class="equip-card__name">HF Beam</div>
         <div class="equip-card__model">SP7IDX Hexbeam</div>
-        <div class="equip-card__desc">6-band directional HF beam on 10/12/15/17/20/40m. ~6 dBi gain and ~20 dB front-to-back ratio. The real power: pointing away from interference. Requires 100W Class A licence to use fully. G-450A rotor reused from Phase 1C.</div>
+        <div class="equip-card__desc">6-band directional HF beam on 10/12/15/17/20/40m. ~6 dBi gain and ~20 dB front-to-back ratio. The real power: pointing away from interference. Requires Class A licence for 100W operation. G-450A rotor reused from Phase 1C.</div>
         <div style="margin-top:.75rem;">
           <div class="spec-row"><span class="spec-key">Bands</span><span class="spec-val">10 · 12 · 15 · 17 · 20 · 40m</span></div>
           <div class="spec-row"><span class="spec-key">Gain</span><span class="spec-val">~6 dBi (1 S-point improvement)</span></div>
           <div class="spec-row"><span class="spec-key">F/B Ratio</span><span class="spec-val">~20 dB — kills QRM from behind</span></div>
         </div>
-        <div class="equip-card__price">± €1.500–2.000 · HexBeam.be</div>
       </div>
 
       <div class="equip-card future">
