@@ -92,7 +92,7 @@
   <line x1="150" y1="97" x2="150" y2="142" stroke="rgba(0,212,255,0.5)" stroke-width="1" stroke-dasharray="2,2"/>
 
   <!-- Bottom bar icons -->
-  <rect x="24" y="142" width="241" height="18" rx="0" fill="#00080e" rx="3"/>
+  <rect x="24" y="142" width="241" height="18" rx="3" fill="#00080e"/>
   <text x="32" y="154" font-family="'Share Tech Mono',monospace" font-size="7" fill="rgba(0,212,255,0.4)">C4FM  WIRES  D  SQL</text>
 
   <!-- Screen border glow -->
